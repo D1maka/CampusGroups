@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="dbCampusGroups" Class="dbCAmpusGroupsDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=.\sqlexpress;Initial Catalog=dbCampusGroups;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="dbCampusGroupsConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Attachment" Member="Attachments">
+    <Type Name="Attachment">
+      <Column Name="attachmentId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="postId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="fileLink" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Association Name="Post_Attachment" Member="Post" ThisKey="postId" OtherKey="postId" Type="Post" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[Group]" Member="Groups">
+    <Type Name="Group">
+      <Column Name="groupId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="groupName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="groupCreationDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="usersAmmount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="groupDescription" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="Group_UserGroup" Member="UserGroups" ThisKey="groupId" OtherKey="groupId" Type="UserGroup" />
+      <Association Name="Group_Post" Member="Posts" ThisKey="groupId" OtherKey="groupId" Type="Post" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UserGroup" Member="UserGroups">
+    <Type Name="UserGroup">
+      <Column Name="userGroupId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="userId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="groupId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="roleId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Group_UserGroup" Member="Group" ThisKey="groupId" OtherKey="groupId" Type="Group" IsForeignKey="true" />
+      <Association Name="Role_UserGroup" Member="Role" ThisKey="roleId" OtherKey="roleId" Type="Role" IsForeignKey="true" />
+      <Association Name="User_UserGroup" Member="User" ThisKey="userId" OtherKey="userId" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Personality" Member="Personalities">
+    <Type Name="Personality">
+      <Column Name="personalityId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="userAccountId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="studyGroupId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="studentId" Type="System.String" DbType="NVarChar(12) NOT NULL" CanBeNull="false" />
+      <Column Name="lastName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="firstName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="middleName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="facultyLongName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="studyGroupName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="UserAccount_Personality" Member="UserAccount" ThisKey="userAccountId" OtherKey="userAccountId" Type="UserAccount" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Post" Member="Posts">
+    <Type Name="Post">
+      <Column Name="postId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="groupId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="authorId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="parentPostId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="postText" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="postDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Association Name="Post_Attachment" Member="Attachments" ThisKey="postId" OtherKey="postId" Type="Attachment" />
+      <Association Name="Post_Post" Member="Posts" ThisKey="postId" OtherKey="parentPostId" Type="Post" />
+      <Association Name="Group_Post" Member="Group" ThisKey="groupId" OtherKey="groupId" Type="Group" IsForeignKey="true" />
+      <Association Name="Post_Post" Member="Post1" ThisKey="parentPostId" OtherKey="postId" Type="Post" IsForeignKey="true" />
+      <Association Name="User_Post" Member="User" ThisKey="authorId" OtherKey="userId" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Role" Member="Roles">
+    <Type Name="Role">
+      <Column Name="roleId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="roleName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Role_UserGroup" Member="UserGroups" ThisKey="roleId" OtherKey="roleId" Type="UserGroup" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Status" Member="Status">
+    <Type Name="Status">
+      <Column Name="statusId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="statusName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Status_User" Member="Users" ThisKey="statusId" OtherKey="statusId" Type="User" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[User]" Member="Users">
+    <Type Name="User">
+      <Column Name="userId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="campusUserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="statusId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="avatarLink" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="User_UserGroup" Member="UserGroups" ThisKey="userId" OtherKey="userId" Type="UserGroup" />
+      <Association Name="User_Post" Member="Posts" ThisKey="userId" OtherKey="authorId" Type="Post" />
+      <Association Name="Status_User" Member="Status" ThisKey="statusId" OtherKey="statusId" Type="Status" IsForeignKey="true" />
+      <Association Name="UserAccount_User" Member="UserAccount" ThisKey="campusUserId" OtherKey="userAccountId" Type="UserAccount" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UserAccount" Member="UserAccounts">
+    <Type Name="UserAccount">
+      <Column Name="userAccountId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Login" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="NewPassword" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Cookie" Type="System.String" DbType="Char(26)" CanBeNull="true" />
+      <Column Name="FullName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ScientificInteres" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="CodeAssembly" Type="System.String" DbType="Char(10)" CanBeNull="true" />
+      <Column Name="vcActuality" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="vcChangeDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="UserAccount_Personality" Member="Personalities" ThisKey="userAccountId" OtherKey="userAccountId" Type="Personality" />
+      <Association Name="UserAccount_User" Member="Users" ThisKey="userAccountId" OtherKey="campusUserId" Type="User" />
+    </Type>
+  </Table>
+</Database>
