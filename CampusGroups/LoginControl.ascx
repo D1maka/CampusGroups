@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="LoginControl.ascx.cs" Inherits="CampusGroups.WebUserControl1" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="LoginControl.ascx.cs" Inherits="CampusGroups.LoginControl" %>
 <asp:Label ID="loginLbl" runat="server" Text="Логін"></asp:Label>
 <asp:TextBox ID="loginTxtBox" runat="server"></asp:TextBox>
 <p>

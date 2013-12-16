@@ -31,22 +31,31 @@ namespace CampusGroups {
         protected global::System.Web.UI.WebControls.Label usernameLbl;
         
         /// <summary>
-        /// ImageButton1 control.
+        /// myGroupsBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ImageButton1;
+        protected global::System.Web.UI.WebControls.ImageButton myGroupsBtn;
         
         /// <summary>
-        /// ImageButton2 control.
+        /// setAvatarBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ImageButton2;
+        protected global::System.Web.UI.WebControls.ImageButton setAvatarBtn;
+        
+        /// <summary>
+        /// newGroupBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton newGroupBtn;
         
         /// <summary>
         /// userProfileType control.

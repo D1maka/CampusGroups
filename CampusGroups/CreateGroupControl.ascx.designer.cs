@@ -10,60 +10,51 @@
 namespace CampusGroups {
     
     
-    public partial class LoginControl {
+    public partial class CreateGroupControl {
         
         /// <summary>
-        /// loginLbl control.
+        /// groupNameLbl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label loginLbl;
+        protected global::System.Web.UI.WebControls.Label groupNameLbl;
         
         /// <summary>
-        /// loginTxtBox control.
+        /// groupNameTxtBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox loginTxtBox;
+        protected global::System.Web.UI.WebControls.TextBox groupNameTxtBox;
         
         /// <summary>
-        /// passwdLbl control.
+        /// groupDescriptionLbl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label passwdLbl;
+        protected global::System.Web.UI.WebControls.Label groupDescriptionLbl;
         
         /// <summary>
-        /// passwdTxtBox control.
+        /// groupDescriptionTxtBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox passwdTxtBox;
+        protected global::System.Web.UI.WebControls.TextBox groupDescriptionTxtBox;
         
         /// <summary>
-        /// errorLbl control.
+        /// createGroupBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label errorLbl;
-        
-        /// <summary>
-        /// loginBrn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button loginBrn;
+        protected global::System.Web.UI.WebControls.Button createGroupBtn;
     }
 }

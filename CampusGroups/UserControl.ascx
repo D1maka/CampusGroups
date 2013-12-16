@@ -1,11 +1,12 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UserControl.ascx.cs" Inherits="CampusGroups.UserControl" %>
-<p>
-    &nbsp;</p>
-<asp:Image ID="avatarImg" runat="server" Height="16px" />
+
+<asp:Image ID="avatarImg" runat="server" />
 &nbsp;<asp:Label ID="usernameLbl" runat="server" Text=""></asp:Label>
-&nbsp;<asp:ImageButton ID="ImageButton1" runat="server" />
-<asp:ImageButton ID="ImageButton2" runat="server" />
+&nbsp;
 <br />
+<asp:ImageButton ID="myGroupsBtn" runat="server" OnClick="myGroupsBtn_Click" />
+<asp:ImageButton ID="setAvatarBtn" runat="server" />
+<asp:ImageButton ID="newGroupBtn" runat="server" />
 <asp:Label ID="userProfileType" runat="server" Text=""></asp:Label>
 <br />
 <asp:Label ID="userDepartment" runat="server" Text=""></asp:Label>

@@ -33,9 +33,6 @@ namespace CampusGroups.data
     partial void InsertAttachment(Attachment instance);
     partial void UpdateAttachment(Attachment instance);
     partial void DeleteAttachment(Attachment instance);
-    partial void InsertGroup(Group instance);
-    partial void UpdateGroup(Group instance);
-    partial void DeleteGroup(Group instance);
     partial void InsertUserGroup(UserGroup instance);
     partial void UpdateUserGroup(UserGroup instance);
     partial void DeleteUserGroup(UserGroup instance);
@@ -54,9 +51,12 @@ namespace CampusGroups.data
     partial void InsertUser(User instance);
     partial void UpdateUser(User instance);
     partial void DeleteUser(User instance);
-    partial void InsertUserAccount(UserAccount instance);
-    partial void UpdateUserAccount(UserAccount instance);
-    partial void DeleteUserAccount(UserAccount instance);
+    partial void InsertGroupRequest(GroupRequest instance);
+    partial void UpdateGroupRequest(GroupRequest instance);
+    partial void DeleteGroupRequest(GroupRequest instance);
+    partial void InsertGroup(Group instance);
+    partial void UpdateGroup(Group instance);
+    partial void DeleteGroup(Group instance);
     #endregion
 		
 		public dbCAmpusGroupsDataContext() : 
@@ -94,14 +94,6 @@ namespace CampusGroups.data
 			get
 			{
 				return this.GetTable<Attachment>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Group> Groups
-		{
-			get
-			{
-				return this.GetTable<Group>();
 			}
 		}
 		
@@ -153,11 +145,19 @@ namespace CampusGroups.data
 			}
 		}
 		
-		public System.Data.Linq.Table<UserAccount> UserAccounts
+		public System.Data.Linq.Table<GroupRequest> GroupRequests
 		{
 			get
 			{
-				return this.GetTable<UserAccount>();
+				return this.GetTable<GroupRequest>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Group> Groups
+		{
+			get
+			{
+				return this.GetTable<Group>();
 			}
 		}
 	}
@@ -313,220 +313,6 @@ namespace CampusGroups.data
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.[Group]")]
-	public partial class Group : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _groupId;
-		
-		private string _groupName;
-		
-		private System.DateTime _groupCreationDate;
-		
-		private int _usersAmmount;
-		
-		private string _groupDescription;
-		
-		private EntitySet<UserGroup> _UserGroups;
-		
-		private EntitySet<Post> _Posts;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OngroupIdChanging(int value);
-    partial void OngroupIdChanged();
-    partial void OngroupNameChanging(string value);
-    partial void OngroupNameChanged();
-    partial void OngroupCreationDateChanging(System.DateTime value);
-    partial void OngroupCreationDateChanged();
-    partial void OnusersAmmountChanging(int value);
-    partial void OnusersAmmountChanged();
-    partial void OngroupDescriptionChanging(string value);
-    partial void OngroupDescriptionChanged();
-    #endregion
-		
-		public Group()
-		{
-			this._UserGroups = new EntitySet<UserGroup>(new Action<UserGroup>(this.attach_UserGroups), new Action<UserGroup>(this.detach_UserGroups));
-			this._Posts = new EntitySet<Post>(new Action<Post>(this.attach_Posts), new Action<Post>(this.detach_Posts));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_groupId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int groupId
-		{
-			get
-			{
-				return this._groupId;
-			}
-			set
-			{
-				if ((this._groupId != value))
-				{
-					this.OngroupIdChanging(value);
-					this.SendPropertyChanging();
-					this._groupId = value;
-					this.SendPropertyChanged("groupId");
-					this.OngroupIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_groupName", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string groupName
-		{
-			get
-			{
-				return this._groupName;
-			}
-			set
-			{
-				if ((this._groupName != value))
-				{
-					this.OngroupNameChanging(value);
-					this.SendPropertyChanging();
-					this._groupName = value;
-					this.SendPropertyChanged("groupName");
-					this.OngroupNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_groupCreationDate", DbType="Date NOT NULL")]
-		public System.DateTime groupCreationDate
-		{
-			get
-			{
-				return this._groupCreationDate;
-			}
-			set
-			{
-				if ((this._groupCreationDate != value))
-				{
-					this.OngroupCreationDateChanging(value);
-					this.SendPropertyChanging();
-					this._groupCreationDate = value;
-					this.SendPropertyChanged("groupCreationDate");
-					this.OngroupCreationDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_usersAmmount", DbType="Int NOT NULL")]
-		public int usersAmmount
-		{
-			get
-			{
-				return this._usersAmmount;
-			}
-			set
-			{
-				if ((this._usersAmmount != value))
-				{
-					this.OnusersAmmountChanging(value);
-					this.SendPropertyChanging();
-					this._usersAmmount = value;
-					this.SendPropertyChanged("usersAmmount");
-					this.OnusersAmmountChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_groupDescription", DbType="NVarChar(MAX)")]
-		public string groupDescription
-		{
-			get
-			{
-				return this._groupDescription;
-			}
-			set
-			{
-				if ((this._groupDescription != value))
-				{
-					this.OngroupDescriptionChanging(value);
-					this.SendPropertyChanging();
-					this._groupDescription = value;
-					this.SendPropertyChanged("groupDescription");
-					this.OngroupDescriptionChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Group_UserGroup", Storage="_UserGroups", ThisKey="groupId", OtherKey="groupId")]
-		public EntitySet<UserGroup> UserGroups
-		{
-			get
-			{
-				return this._UserGroups;
-			}
-			set
-			{
-				this._UserGroups.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Group_Post", Storage="_Posts", ThisKey="groupId", OtherKey="groupId")]
-		public EntitySet<Post> Posts
-		{
-			get
-			{
-				return this._Posts;
-			}
-			set
-			{
-				this._Posts.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_UserGroups(UserGroup entity)
-		{
-			this.SendPropertyChanging();
-			entity.Group = this;
-		}
-		
-		private void detach_UserGroups(UserGroup entity)
-		{
-			this.SendPropertyChanging();
-			entity.Group = null;
-		}
-		
-		private void attach_Posts(Post entity)
-		{
-			this.SendPropertyChanging();
-			entity.Group = this;
-		}
-		
-		private void detach_Posts(Post entity)
-		{
-			this.SendPropertyChanging();
-			entity.Group = null;
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.UserGroup")]
 	public partial class UserGroup : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -541,11 +327,11 @@ namespace CampusGroups.data
 		
 		private int _roleId;
 		
-		private EntityRef<Group> _Group;
-		
 		private EntityRef<Role> _Role;
 		
 		private EntityRef<User> _User;
+		
+		private EntityRef<Group> _Group;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -563,9 +349,9 @@ namespace CampusGroups.data
 		
 		public UserGroup()
 		{
-			this._Group = default(EntityRef<Group>);
 			this._Role = default(EntityRef<Role>);
 			this._User = default(EntityRef<User>);
+			this._Group = default(EntityRef<Group>);
 			OnCreated();
 		}
 		
@@ -661,40 +447,6 @@ namespace CampusGroups.data
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Group_UserGroup", Storage="_Group", ThisKey="groupId", OtherKey="groupId", IsForeignKey=true)]
-		public Group Group
-		{
-			get
-			{
-				return this._Group.Entity;
-			}
-			set
-			{
-				Group previousValue = this._Group.Entity;
-				if (((previousValue != value) 
-							|| (this._Group.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Group.Entity = null;
-						previousValue.UserGroups.Remove(this);
-					}
-					this._Group.Entity = value;
-					if ((value != null))
-					{
-						value.UserGroups.Add(this);
-						this._groupId = value.groupId;
-					}
-					else
-					{
-						this._groupId = default(int);
-					}
-					this.SendPropertyChanged("Group");
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Role_UserGroup", Storage="_Role", ThisKey="roleId", OtherKey="roleId", IsForeignKey=true)]
 		public Role Role
 		{
@@ -763,6 +515,40 @@ namespace CampusGroups.data
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Group_UserGroup", Storage="_Group", ThisKey="groupId", OtherKey="groupId", IsForeignKey=true)]
+		public Group Group
+		{
+			get
+			{
+				return this._Group.Entity;
+			}
+			set
+			{
+				Group previousValue = this._Group.Entity;
+				if (((previousValue != value) 
+							|| (this._Group.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Group.Entity = null;
+						previousValue.UserGroups.Remove(this);
+					}
+					this._Group.Entity = value;
+					if ((value != null))
+					{
+						value.UserGroups.Add(this);
+						this._groupId = value.groupId;
+					}
+					else
+					{
+						this._groupId = default(int);
+					}
+					this.SendPropertyChanged("Group");
+				}
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -808,8 +594,6 @@ namespace CampusGroups.data
 		
 		private string _studyGroupName;
 		
-		private EntityRef<UserAccount> _UserAccount;
-		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -836,7 +620,6 @@ namespace CampusGroups.data
 		
 		public Personality()
 		{
-			this._UserAccount = default(EntityRef<UserAccount>);
 			OnCreated();
 		}
 		
@@ -871,10 +654,6 @@ namespace CampusGroups.data
 			{
 				if ((this._userAccountId != value))
 				{
-					if (this._UserAccount.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
 					this.OnuserAccountIdChanging(value);
 					this.SendPropertyChanging();
 					this._userAccountId = value;
@@ -1024,40 +803,6 @@ namespace CampusGroups.data
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="UserAccount_Personality", Storage="_UserAccount", ThisKey="userAccountId", OtherKey="userAccountId", IsForeignKey=true)]
-		public UserAccount UserAccount
-		{
-			get
-			{
-				return this._UserAccount.Entity;
-			}
-			set
-			{
-				UserAccount previousValue = this._UserAccount.Entity;
-				if (((previousValue != value) 
-							|| (this._UserAccount.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._UserAccount.Entity = null;
-						previousValue.Personalities.Remove(this);
-					}
-					this._UserAccount.Entity = value;
-					if ((value != null))
-					{
-						value.Personalities.Add(this);
-						this._userAccountId = value.userAccountId;
-					}
-					else
-					{
-						this._userAccountId = default(int);
-					}
-					this.SendPropertyChanged("UserAccount");
-				}
-			}
-		}
-		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -1101,11 +846,11 @@ namespace CampusGroups.data
 		
 		private EntitySet<Post> _Posts;
 		
-		private EntityRef<Group> _Group;
-		
 		private EntityRef<Post> _Post1;
 		
 		private EntityRef<User> _User;
+		
+		private EntityRef<Group> _Group;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -1129,9 +874,9 @@ namespace CampusGroups.data
 		{
 			this._Attachments = new EntitySet<Attachment>(new Action<Attachment>(this.attach_Attachments), new Action<Attachment>(this.detach_Attachments));
 			this._Posts = new EntitySet<Post>(new Action<Post>(this.attach_Posts), new Action<Post>(this.detach_Posts));
-			this._Group = default(EntityRef<Group>);
 			this._Post1 = default(EntityRef<Post>);
 			this._User = default(EntityRef<User>);
+			this._Group = default(EntityRef<Group>);
 			OnCreated();
 		}
 		
@@ -1293,40 +1038,6 @@ namespace CampusGroups.data
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Group_Post", Storage="_Group", ThisKey="groupId", OtherKey="groupId", IsForeignKey=true)]
-		public Group Group
-		{
-			get
-			{
-				return this._Group.Entity;
-			}
-			set
-			{
-				Group previousValue = this._Group.Entity;
-				if (((previousValue != value) 
-							|| (this._Group.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Group.Entity = null;
-						previousValue.Posts.Remove(this);
-					}
-					this._Group.Entity = value;
-					if ((value != null))
-					{
-						value.Posts.Add(this);
-						this._groupId = value.groupId;
-					}
-					else
-					{
-						this._groupId = default(int);
-					}
-					this.SendPropertyChanged("Group");
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Post_Post", Storage="_Post1", ThisKey="parentPostId", OtherKey="postId", IsForeignKey=true)]
 		public Post Post1
 		{
@@ -1391,6 +1102,40 @@ namespace CampusGroups.data
 						this._authorId = default(int);
 					}
 					this.SendPropertyChanged("User");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Group_Post", Storage="_Group", ThisKey="groupId", OtherKey="groupId", IsForeignKey=true)]
+		public Group Group
+		{
+			get
+			{
+				return this._Group.Entity;
+			}
+			set
+			{
+				Group previousValue = this._Group.Entity;
+				if (((previousValue != value) 
+							|| (this._Group.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Group.Entity = null;
+						previousValue.Posts.Remove(this);
+					}
+					this._Group.Entity = value;
+					if ((value != null))
+					{
+						value.Posts.Add(this);
+						this._groupId = value.groupId;
+					}
+					else
+					{
+						this._groupId = default(int);
+					}
+					this.SendPropertyChanged("Group");
 				}
 			}
 		}
@@ -1686,9 +1431,9 @@ namespace CampusGroups.data
 		
 		private EntitySet<Post> _Posts;
 		
-		private EntityRef<Status> _Status;
+		private EntitySet<GroupRequest> _GroupRequests;
 		
-		private EntityRef<UserAccount> _UserAccount;
+		private EntityRef<Status> _Status;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -1708,8 +1453,8 @@ namespace CampusGroups.data
 		{
 			this._UserGroups = new EntitySet<UserGroup>(new Action<UserGroup>(this.attach_UserGroups), new Action<UserGroup>(this.detach_UserGroups));
 			this._Posts = new EntitySet<Post>(new Action<Post>(this.attach_Posts), new Action<Post>(this.detach_Posts));
+			this._GroupRequests = new EntitySet<GroupRequest>(new Action<GroupRequest>(this.attach_GroupRequests), new Action<GroupRequest>(this.detach_GroupRequests));
 			this._Status = default(EntityRef<Status>);
-			this._UserAccount = default(EntityRef<UserAccount>);
 			OnCreated();
 		}
 		
@@ -1744,10 +1489,6 @@ namespace CampusGroups.data
 			{
 				if ((this._campusUserId != value))
 				{
-					if (this._UserAccount.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
 					this.OncampusUserIdChanging(value);
 					this.SendPropertyChanging();
 					this._campusUserId = value;
@@ -1827,6 +1568,19 @@ namespace CampusGroups.data
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_GroupRequest", Storage="_GroupRequests", ThisKey="userId", OtherKey="userId")]
+		public EntitySet<GroupRequest> GroupRequests
+		{
+			get
+			{
+				return this._GroupRequests;
+			}
+			set
+			{
+				this._GroupRequests.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Status_User", Storage="_Status", ThisKey="statusId", OtherKey="statusId", IsForeignKey=true)]
 		public Status Status
 		{
@@ -1857,40 +1611,6 @@ namespace CampusGroups.data
 						this._statusId = default(int);
 					}
 					this.SendPropertyChanged("Status");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="UserAccount_User", Storage="_UserAccount", ThisKey="campusUserId", OtherKey="userAccountId", IsForeignKey=true)]
-		public UserAccount UserAccount
-		{
-			get
-			{
-				return this._UserAccount.Entity;
-			}
-			set
-			{
-				UserAccount previousValue = this._UserAccount.Entity;
-				if (((previousValue != value) 
-							|| (this._UserAccount.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._UserAccount.Entity = null;
-						previousValue.Users.Remove(this);
-					}
-					this._UserAccount.Entity = value;
-					if ((value != null))
-					{
-						value.Users.Add(this);
-						this._campusUserId = value.userAccountId;
-					}
-					else
-					{
-						this._campusUserId = default(int);
-					}
-					this.SendPropertyChanged("UserAccount");
 				}
 			}
 		}
@@ -1938,318 +1658,442 @@ namespace CampusGroups.data
 			this.SendPropertyChanging();
 			entity.User = null;
 		}
+		
+		private void attach_GroupRequests(GroupRequest entity)
+		{
+			this.SendPropertyChanging();
+			entity.User = this;
+		}
+		
+		private void detach_GroupRequests(GroupRequest entity)
+		{
+			this.SendPropertyChanging();
+			entity.User = null;
+		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.UserAccount")]
-	public partial class UserAccount : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.GroupRequest")]
+	public partial class GroupRequest : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _userAccountId;
+		private int _groupRequestId;
 		
-		private string _Login;
+		private int _groupId;
 		
-		private string _Password;
+		private int _userId;
 		
-		private string _Email;
+		private System.DateTime _date;
 		
-		private string _NewPassword;
+		private int _processed;
 		
-		private string _Cookie;
+		private EntityRef<User> _User;
 		
-		private string _FullName;
-		
-		private string _ScientificInteres;
-		
-		private string _CodeAssembly;
-		
-		private char _vcActuality;
-		
-		private System.DateTime _vcChangeDate;
-		
-		private EntitySet<Personality> _Personalities;
-		
-		private EntitySet<User> _Users;
+		private EntityRef<Group> _Group;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnuserAccountIdChanging(int value);
-    partial void OnuserAccountIdChanged();
-    partial void OnLoginChanging(string value);
-    partial void OnLoginChanged();
-    partial void OnPasswordChanging(string value);
-    partial void OnPasswordChanged();
-    partial void OnEmailChanging(string value);
-    partial void OnEmailChanged();
-    partial void OnNewPasswordChanging(string value);
-    partial void OnNewPasswordChanged();
-    partial void OnCookieChanging(string value);
-    partial void OnCookieChanged();
-    partial void OnFullNameChanging(string value);
-    partial void OnFullNameChanged();
-    partial void OnScientificInteresChanging(string value);
-    partial void OnScientificInteresChanged();
-    partial void OnCodeAssemblyChanging(string value);
-    partial void OnCodeAssemblyChanged();
-    partial void OnvcActualityChanging(char value);
-    partial void OnvcActualityChanged();
-    partial void OnvcChangeDateChanging(System.DateTime value);
-    partial void OnvcChangeDateChanged();
+    partial void OngroupRequestIdChanging(int value);
+    partial void OngroupRequestIdChanged();
+    partial void OngroupIdChanging(int value);
+    partial void OngroupIdChanged();
+    partial void OnuserIdChanging(int value);
+    partial void OnuserIdChanged();
+    partial void OndateChanging(System.DateTime value);
+    partial void OndateChanged();
+    partial void OnprocessedChanging(int value);
+    partial void OnprocessedChanged();
     #endregion
 		
-		public UserAccount()
+		public GroupRequest()
 		{
-			this._Personalities = new EntitySet<Personality>(new Action<Personality>(this.attach_Personalities), new Action<Personality>(this.detach_Personalities));
-			this._Users = new EntitySet<User>(new Action<User>(this.attach_Users), new Action<User>(this.detach_Users));
+			this._User = default(EntityRef<User>);
+			this._Group = default(EntityRef<Group>);
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_userAccountId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int userAccountId
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_groupRequestId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int groupRequestId
 		{
 			get
 			{
-				return this._userAccountId;
+				return this._groupRequestId;
 			}
 			set
 			{
-				if ((this._userAccountId != value))
+				if ((this._groupRequestId != value))
 				{
-					this.OnuserAccountIdChanging(value);
+					this.OngroupRequestIdChanging(value);
 					this.SendPropertyChanging();
-					this._userAccountId = value;
-					this.SendPropertyChanged("userAccountId");
-					this.OnuserAccountIdChanged();
+					this._groupRequestId = value;
+					this.SendPropertyChanged("groupRequestId");
+					this.OngroupRequestIdChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Login", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string Login
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_groupId", DbType="Int NOT NULL")]
+		public int groupId
 		{
 			get
 			{
-				return this._Login;
+				return this._groupId;
 			}
 			set
 			{
-				if ((this._Login != value))
+				if ((this._groupId != value))
 				{
-					this.OnLoginChanging(value);
+					if (this._Group.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OngroupIdChanging(value);
 					this.SendPropertyChanging();
-					this._Login = value;
-					this.SendPropertyChanged("Login");
-					this.OnLoginChanged();
+					this._groupId = value;
+					this.SendPropertyChanged("groupId");
+					this.OngroupIdChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Password", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string Password
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_userId", DbType="Int NOT NULL")]
+		public int userId
 		{
 			get
 			{
-				return this._Password;
+				return this._userId;
 			}
 			set
 			{
-				if ((this._Password != value))
+				if ((this._userId != value))
 				{
-					this.OnPasswordChanging(value);
+					if (this._User.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnuserIdChanging(value);
 					this.SendPropertyChanging();
-					this._Password = value;
-					this.SendPropertyChanged("Password");
-					this.OnPasswordChanged();
+					this._userId = value;
+					this.SendPropertyChanged("userId");
+					this.OnuserIdChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="NVarChar(100)")]
-		public string Email
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_date", DbType="DateTime NOT NULL")]
+		public System.DateTime date
 		{
 			get
 			{
-				return this._Email;
+				return this._date;
 			}
 			set
 			{
-				if ((this._Email != value))
+				if ((this._date != value))
 				{
-					this.OnEmailChanging(value);
+					this.OndateChanging(value);
 					this.SendPropertyChanging();
-					this._Email = value;
-					this.SendPropertyChanged("Email");
-					this.OnEmailChanged();
+					this._date = value;
+					this.SendPropertyChanged("date");
+					this.OndateChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NewPassword", DbType="NVarChar(50)")]
-		public string NewPassword
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_processed", DbType="Int NOT NULL")]
+		public int processed
 		{
 			get
 			{
-				return this._NewPassword;
+				return this._processed;
 			}
 			set
 			{
-				if ((this._NewPassword != value))
+				if ((this._processed != value))
 				{
-					this.OnNewPasswordChanging(value);
+					this.OnprocessedChanging(value);
 					this.SendPropertyChanging();
-					this._NewPassword = value;
-					this.SendPropertyChanged("NewPassword");
-					this.OnNewPasswordChanged();
+					this._processed = value;
+					this.SendPropertyChanged("processed");
+					this.OnprocessedChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Cookie", DbType="Char(26)")]
-		public string Cookie
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_GroupRequest", Storage="_User", ThisKey="userId", OtherKey="userId", IsForeignKey=true)]
+		public User User
 		{
 			get
 			{
-				return this._Cookie;
+				return this._User.Entity;
 			}
 			set
 			{
-				if ((this._Cookie != value))
+				User previousValue = this._User.Entity;
+				if (((previousValue != value) 
+							|| (this._User.HasLoadedOrAssignedValue == false)))
 				{
-					this.OnCookieChanging(value);
 					this.SendPropertyChanging();
-					this._Cookie = value;
-					this.SendPropertyChanged("Cookie");
-					this.OnCookieChanged();
+					if ((previousValue != null))
+					{
+						this._User.Entity = null;
+						previousValue.GroupRequests.Remove(this);
+					}
+					this._User.Entity = value;
+					if ((value != null))
+					{
+						value.GroupRequests.Add(this);
+						this._userId = value.userId;
+					}
+					else
+					{
+						this._userId = default(int);
+					}
+					this.SendPropertyChanged("User");
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FullName", DbType="NVarChar(100)")]
-		public string FullName
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Group_GroupRequest", Storage="_Group", ThisKey="groupId", OtherKey="groupId", IsForeignKey=true)]
+		public Group Group
 		{
 			get
 			{
-				return this._FullName;
+				return this._Group.Entity;
 			}
 			set
 			{
-				if ((this._FullName != value))
+				Group previousValue = this._Group.Entity;
+				if (((previousValue != value) 
+							|| (this._Group.HasLoadedOrAssignedValue == false)))
 				{
-					this.OnFullNameChanging(value);
 					this.SendPropertyChanging();
-					this._FullName = value;
-					this.SendPropertyChanged("FullName");
-					this.OnFullNameChanged();
+					if ((previousValue != null))
+					{
+						this._Group.Entity = null;
+						previousValue.GroupRequests.Remove(this);
+					}
+					this._Group.Entity = value;
+					if ((value != null))
+					{
+						value.GroupRequests.Add(this);
+						this._groupId = value.groupId;
+					}
+					else
+					{
+						this._groupId = default(int);
+					}
+					this.SendPropertyChanged("Group");
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ScientificInteres", DbType="NVarChar(255)")]
-		public string ScientificInteres
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.[Group]")]
+	public partial class Group : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _groupId;
+		
+		private string _groupName;
+		
+		private System.DateTime _groupCreationDate;
+		
+		private int _usersAmmount;
+		
+		private string _groupDescription;
+		
+		private EntitySet<UserGroup> _UserGroups;
+		
+		private EntitySet<Post> _Posts;
+		
+		private EntitySet<GroupRequest> _GroupRequests;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OngroupIdChanging(int value);
+    partial void OngroupIdChanged();
+    partial void OngroupNameChanging(string value);
+    partial void OngroupNameChanged();
+    partial void OngroupCreationDateChanging(System.DateTime value);
+    partial void OngroupCreationDateChanged();
+    partial void OnusersAmmountChanging(int value);
+    partial void OnusersAmmountChanged();
+    partial void OngroupDescriptionChanging(string value);
+    partial void OngroupDescriptionChanged();
+    #endregion
+		
+		public Group()
+		{
+			this._UserGroups = new EntitySet<UserGroup>(new Action<UserGroup>(this.attach_UserGroups), new Action<UserGroup>(this.detach_UserGroups));
+			this._Posts = new EntitySet<Post>(new Action<Post>(this.attach_Posts), new Action<Post>(this.detach_Posts));
+			this._GroupRequests = new EntitySet<GroupRequest>(new Action<GroupRequest>(this.attach_GroupRequests), new Action<GroupRequest>(this.detach_GroupRequests));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_groupId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int groupId
 		{
 			get
 			{
-				return this._ScientificInteres;
+				return this._groupId;
 			}
 			set
 			{
-				if ((this._ScientificInteres != value))
+				if ((this._groupId != value))
 				{
-					this.OnScientificInteresChanging(value);
+					this.OngroupIdChanging(value);
 					this.SendPropertyChanging();
-					this._ScientificInteres = value;
-					this.SendPropertyChanged("ScientificInteres");
-					this.OnScientificInteresChanged();
+					this._groupId = value;
+					this.SendPropertyChanged("groupId");
+					this.OngroupIdChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CodeAssembly", DbType="Char(10)")]
-		public string CodeAssembly
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_groupName", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string groupName
 		{
 			get
 			{
-				return this._CodeAssembly;
+				return this._groupName;
 			}
 			set
 			{
-				if ((this._CodeAssembly != value))
+				if ((this._groupName != value))
 				{
-					this.OnCodeAssemblyChanging(value);
+					this.OngroupNameChanging(value);
 					this.SendPropertyChanging();
-					this._CodeAssembly = value;
-					this.SendPropertyChanged("CodeAssembly");
-					this.OnCodeAssemblyChanged();
+					this._groupName = value;
+					this.SendPropertyChanged("groupName");
+					this.OngroupNameChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_vcActuality", DbType="Char(1) NOT NULL")]
-		public char vcActuality
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_groupCreationDate", DbType="Date NOT NULL")]
+		public System.DateTime groupCreationDate
 		{
 			get
 			{
-				return this._vcActuality;
+				return this._groupCreationDate;
 			}
 			set
 			{
-				if ((this._vcActuality != value))
+				if ((this._groupCreationDate != value))
 				{
-					this.OnvcActualityChanging(value);
+					this.OngroupCreationDateChanging(value);
 					this.SendPropertyChanging();
-					this._vcActuality = value;
-					this.SendPropertyChanged("vcActuality");
-					this.OnvcActualityChanged();
+					this._groupCreationDate = value;
+					this.SendPropertyChanged("groupCreationDate");
+					this.OngroupCreationDateChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_vcChangeDate", DbType="DateTime NOT NULL")]
-		public System.DateTime vcChangeDate
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_usersAmmount", DbType="Int NOT NULL")]
+		public int usersAmmount
 		{
 			get
 			{
-				return this._vcChangeDate;
+				return this._usersAmmount;
 			}
 			set
 			{
-				if ((this._vcChangeDate != value))
+				if ((this._usersAmmount != value))
 				{
-					this.OnvcChangeDateChanging(value);
+					this.OnusersAmmountChanging(value);
 					this.SendPropertyChanging();
-					this._vcChangeDate = value;
-					this.SendPropertyChanged("vcChangeDate");
-					this.OnvcChangeDateChanged();
+					this._usersAmmount = value;
+					this.SendPropertyChanged("usersAmmount");
+					this.OnusersAmmountChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="UserAccount_Personality", Storage="_Personalities", ThisKey="userAccountId", OtherKey="userAccountId")]
-		public EntitySet<Personality> Personalities
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_groupDescription", DbType="NVarChar(MAX)")]
+		public string groupDescription
 		{
 			get
 			{
-				return this._Personalities;
+				return this._groupDescription;
 			}
 			set
 			{
-				this._Personalities.Assign(value);
+				if ((this._groupDescription != value))
+				{
+					this.OngroupDescriptionChanging(value);
+					this.SendPropertyChanging();
+					this._groupDescription = value;
+					this.SendPropertyChanged("groupDescription");
+					this.OngroupDescriptionChanged();
+				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="UserAccount_User", Storage="_Users", ThisKey="userAccountId", OtherKey="campusUserId")]
-		public EntitySet<User> Users
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Group_UserGroup", Storage="_UserGroups", ThisKey="groupId", OtherKey="groupId")]
+		public EntitySet<UserGroup> UserGroups
 		{
 			get
 			{
-				return this._Users;
+				return this._UserGroups;
 			}
 			set
 			{
-				this._Users.Assign(value);
+				this._UserGroups.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Group_Post", Storage="_Posts", ThisKey="groupId", OtherKey="groupId")]
+		public EntitySet<Post> Posts
+		{
+			get
+			{
+				return this._Posts;
+			}
+			set
+			{
+				this._Posts.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Group_GroupRequest", Storage="_GroupRequests", ThisKey="groupId", OtherKey="groupId")]
+		public EntitySet<GroupRequest> GroupRequests
+		{
+			get
+			{
+				return this._GroupRequests;
+			}
+			set
+			{
+				this._GroupRequests.Assign(value);
 			}
 		}
 		
@@ -2273,28 +2117,40 @@ namespace CampusGroups.data
 			}
 		}
 		
-		private void attach_Personalities(Personality entity)
+		private void attach_UserGroups(UserGroup entity)
 		{
 			this.SendPropertyChanging();
-			entity.UserAccount = this;
+			entity.Group = this;
 		}
 		
-		private void detach_Personalities(Personality entity)
+		private void detach_UserGroups(UserGroup entity)
 		{
 			this.SendPropertyChanging();
-			entity.UserAccount = null;
+			entity.Group = null;
 		}
 		
-		private void attach_Users(User entity)
+		private void attach_Posts(Post entity)
 		{
 			this.SendPropertyChanging();
-			entity.UserAccount = this;
+			entity.Group = this;
 		}
 		
-		private void detach_Users(User entity)
+		private void detach_Posts(Post entity)
 		{
 			this.SendPropertyChanging();
-			entity.UserAccount = null;
+			entity.Group = null;
+		}
+		
+		private void attach_GroupRequests(GroupRequest entity)
+		{
+			this.SendPropertyChanging();
+			entity.Group = this;
+		}
+		
+		private void detach_GroupRequests(GroupRequest entity)
+		{
+			this.SendPropertyChanging();
+			entity.Group = null;
 		}
 	}
 }

@@ -9,8 +9,13 @@ using CampusGroups.data;
 
 namespace CampusGroups
 {
-    public partial class WebUserControl1 : System.Web.UI.UserControl
+    public partial class LoginControl : System.Web.UI.UserControl
     {
+        protected override void OnInit(EventArgs e)
+        {
+            Page.RegisterRequiresControlState(this);
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -31,6 +36,7 @@ namespace CampusGroups
                     user = new User();
                     user.campusUserId = id;
                     user.avatarLink = UserDAO.DEFAULT_AVATAR_PATH;
+                    user.statusId = UserDAO.USER_STATUS_ID;
                     usrDAO.addUser(user);
                 }
                 Session["userCampusId"] = id;

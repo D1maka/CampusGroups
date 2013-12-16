@@ -50,7 +50,7 @@ namespace CampusGroups.dao
             UserGroup userGroup = new UserGroup();
             userGroup.groupId = group.groupId;
             userGroup.userId = userGroup.userId;
-            userGroup.roleId = 0;
+            userGroup.roleId = 1;
             db.UserGroups.InsertOnSubmit(userGroup);
             db.SubmitChanges();
         }

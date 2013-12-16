@@ -28,6 +28,9 @@ namespace CampusGroups
                 this.usernameLbl.Text = name;
                 this.userProfileType.Text = profile;
                 this.userDepartment.Text = department;
+                this.avatarImg.Height = 128;
+                this.avatarImg.Width = 128;
+                this.avatarImg.ImageUrl = UserDAO.DEFAULT_AVATAR_PATH;
                 //System.Drawing.Image img = System.Drawing.Image.FromFile(user.avatarLink);
                 //this.avatarImg.im
             }
@@ -45,6 +48,11 @@ namespace CampusGroups
             var newImage = new Bitmap(newWidth, newHeight);
             Graphics.FromImage(newImage).DrawImage(image, 0, 0, newWidth, newHeight);
             return newImage;
+        }
+
+        protected void myGroupsBtn_Click(object sender, ImageClickEventArgs e)
+        {
+            Response.Redirect("~/UserPage.aspx");
         }
     }
 }

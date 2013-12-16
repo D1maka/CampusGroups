@@ -14,7 +14,9 @@ namespace CampusGroups.dao
         private SqlCommand command;
         private dbCAmpusGroupsDataContext db;
 
-        public static String DEFAULT_AVATAR_PATH = "";
+        public static String DEFAULT_AVATAR_PATH = @"~\avatars\noavatar.jpg";
+        public static int ADMIN_STATUS_ID = 1;
+        public static int USER_STATUS_ID = 2;
         
 
         private UserDAO()
@@ -81,7 +83,7 @@ namespace CampusGroups.dao
         public String getSubdivisionNameByCampusUserAccountId(int id)
         {
             String name = "";
-            var query = "SELECT DcProfile.Name FROM UserAccount JOIN UserAccountLinkDcProfile " +
+            var query = "SELECT DcSubdivision.Name FROM UserAccount JOIN UserAccountLinkDcProfile " +
                         "ON UserAccountLinkDcProfile.UserAccountId = UserAccount.UserAccountId " +
                         "JOIN DcSubdivision ON UserAccountLinkDcProfile.DcSubdivisionId = DcSubdivision.DcSubdivisionId " +
                         "WHERE UserAccount.UserAccountId = " + id;

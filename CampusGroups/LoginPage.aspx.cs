@@ -11,7 +11,7 @@ namespace CampusGroups
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            this.PlaceHolderLogin.Controls.Add(Page.LoadControl(@"~\LoginControl.ascx"));
         }
     }
 }

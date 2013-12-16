@@ -10,7 +10,7 @@ namespace CampusGroups.dao
     {
         private static CampusDbConnection instance;
 
-        private static String connectionString = @"Data Source=tcp:10.13.125.167,1433;Initial Catalog=rIrCampus1.8Test;User ID=veres";
+        private static String connectionString = @"Data Source=tcp:10.13.125.167,1433;Initial Catalog=rIrCampus1.8Test;User ID=veres;Password=dima12345";
         private SqlConnection campusConnection;
 
         private CampusDbConnection()
