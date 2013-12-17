@@ -16,7 +16,9 @@ namespace CampusGroups
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["userCampusId"] == null)
+            {
                 Response.Redirect("~/LoginPage.aspx");
+            }
             else
             {
                 int id = Int32.Parse(Session["userCampusId"].ToString());
@@ -31,8 +33,6 @@ namespace CampusGroups
                 this.avatarImg.Height = 128;
                 this.avatarImg.Width = 128;
                 this.avatarImg.ImageUrl = UserDAO.DEFAULT_AVATAR_PATH;
-                //System.Drawing.Image img = System.Drawing.Image.FromFile(user.avatarLink);
-                //this.avatarImg.im
             }
         }
 
@@ -53,6 +53,16 @@ namespace CampusGroups
         protected void myGroupsBtn_Click(object sender, ImageClickEventArgs e)
         {
             Response.Redirect("~/UserPage.aspx");
+        }
+
+        protected void newGroupBtn_Click(object sender, ImageClickEventArgs e)
+        {
+            Response.Redirect("~/CreateGroupPage.aspx");
+        }
+
+        protected void viewAllGroupsBtn_Click(object sender, ImageClickEventArgs e)
+        {
+            Response.Redirect("~/AllGroupsPage.aspx");
         }
     }
 }

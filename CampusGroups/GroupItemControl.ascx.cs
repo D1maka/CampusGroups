@@ -21,5 +21,14 @@ namespace CampusGroups
         {
             this.groupNameLbl.Text = currentGroup.groupName;
         }
+
+        protected void leaveGroupButton_Click(object sender, ImageClickEventArgs e)
+        {
+            int id = Int32.Parse(Session["userCampusId"].ToString());
+            UserDAO usrDAO = UserDAO.getUserDAO();
+            GroupDAO groupDAO = GroupDAO.getGroupDAO();
+            User user = usrDAO.getGroupsUserByCampusAccountId(id);
+            groupDAO.deleteUserFromGroup(currentGroup, user);
+        }
     }
 }

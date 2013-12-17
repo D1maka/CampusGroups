@@ -134,6 +134,7 @@
     <Content Include="Account\OpenAuthProviders.ascx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="Account\RegisterExternalLogin.aspx" />
+    <Content Include="AllGroupsPage.aspx" />
     <Content Include="avatars\noavatar.jpg" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\Site.css" />
@@ -192,8 +193,11 @@
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="CreateGroupControl.ascx" />
+    <Content Include="CreateGroupPage.aspx" />
     <Content Include="GroupItemControl.ascx" />
     <Content Include="GroupMemberControl.ascx" />
+    <Content Include="GroupPage.aspx" />
+    <Content Include="GroupRequestControl.ascx" />
     <Content Include="Images\accent.png" />
     <Content Include="Images\bullet.png" />
     <Content Include="Images\heroAccent.png" />
@@ -266,6 +270,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AllGroupsPage.aspx.cs">
+      <DependentUpon>AllGroupsPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AllGroupsPage.aspx.designer.cs">
+      <DependentUpon>AllGroupsPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\AuthConfig.cs" />
     <Compile Include="About.aspx.cs">
@@ -332,6 +343,13 @@
     <Compile Include="CreateGroupControl.ascx.designer.cs">
       <DependentUpon>CreateGroupControl.ascx</DependentUpon>
     </Compile>
+    <Compile Include="CreateGroupPage.aspx.cs">
+      <DependentUpon>CreateGroupPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CreateGroupPage.aspx.designer.cs">
+      <DependentUpon>CreateGroupPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="dao\CampusDbConnection.cs" />
     <Compile Include="dao\GroupDAO.cs" />
     <Compile Include="dao\PostDAO.cs" />
@@ -365,6 +383,20 @@
     </Compile>
     <Compile Include="GroupMemberControl.ascx.designer.cs">
       <DependentUpon>GroupMemberControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="GroupPage.aspx.cs">
+      <DependentUpon>GroupPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GroupPage.aspx.designer.cs">
+      <DependentUpon>GroupPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GroupRequestControl.ascx.cs">
+      <DependentUpon>GroupRequestControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GroupRequestControl.ascx.designer.cs">
+      <DependentUpon>GroupRequestControl.ascx</DependentUpon>
     </Compile>
     <Compile Include="logic\ViewHelper.cs" />
     <Compile Include="LoginPage.aspx.cs">

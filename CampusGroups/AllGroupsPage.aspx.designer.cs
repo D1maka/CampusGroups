@@ -10,51 +10,33 @@
 namespace CampusGroups {
     
     
-    public partial class GroupMemberControl {
+    public partial class AllGroupsPage {
         
         /// <summary>
-        /// avatarImg control.
+        /// form1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image avatarImg;
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// usernameLbl control.
+        /// PlaceHolderUserControl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label usernameLbl;
+        protected global::System.Web.UI.WebControls.PlaceHolder PlaceHolderUserControl;
         
         /// <summary>
-        /// userProfileType control.
+        /// PlaceHolderAllGroups control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label userProfileType;
-        
-        /// <summary>
-        /// userDepartment control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label userDepartment;
-        
-        /// <summary>
-        /// deleteBtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton deleteBtn;
+        protected global::System.Web.UI.WebControls.PlaceHolder PlaceHolderAllGroups;
     }
 }

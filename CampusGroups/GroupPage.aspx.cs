@@ -7,12 +7,11 @@ using System.Web.UI.WebControls;
 
 namespace CampusGroups
 {
-    public partial class LoginPage : System.Web.UI.Page
+    public partial class GroupPage : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.PlaceHolderLogin.Controls.Add(Page.LoadControl(@"~\LoginControl.ascx"));
-           
+            this.PlaceHolderUserPannel.Controls.Add(Page.LoadControl(@"~\UserControl.ascx"));
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="GroupMemberControl.ascx.cs" Inherits="CampusGroups.GroupMemberControl" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="GroupRequestControl.ascx.cs" Inherits="CampusGroups.GroupRequestControl" %>
 <asp:Image ID="avatarImg" runat="server" />
 &nbsp;<asp:Label ID="usernameLbl" runat="server" Text=""></asp:Label>
 &nbsp;
@@ -7,5 +7,4 @@
 <br />
 <asp:Label ID="userDepartment" runat="server" Text=""></asp:Label>
 <br />
-<asp:ImageButton ID="deleteBtn" runat="server" Visible="False" />
-
+<asp:ImageButton ID="acceptRequest" runat="server" OnClick="acceptRequest_Click" />

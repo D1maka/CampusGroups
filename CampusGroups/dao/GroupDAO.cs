@@ -47,9 +47,10 @@ namespace CampusGroups.dao
         public void insertGroup(Group group, User creator)
         {
             db.Groups.InsertOnSubmit(group);
+            db.SubmitChanges();
             UserGroup userGroup = new UserGroup();
             userGroup.groupId = group.groupId;
-            userGroup.userId = userGroup.userId;
+            userGroup.userId = creator.userId;
             userGroup.roleId = 1;
             db.UserGroups.InsertOnSubmit(userGroup);
             db.SubmitChanges();
@@ -77,6 +78,28 @@ namespace CampusGroups.dao
             userGroup.groupId = targetGroup.groupId;
             userGroup.roleId = role.roleId;
             db.UserGroups.InsertOnSubmit(userGroup);
+            db.SubmitChanges();
+        }
+
+        public void deleteGroup(Group myGroup)
+        {
+            var query = from userGroup in db.UserGroups where userGroup.groupId == myGroup.groupId select userGroup;
+            foreach (var usrgrp in query)
+            {
+                db.UserGroups.DeleteOnSubmit(usrgrp);
+            }
+            db.SubmitChanges();
+            db.Groups.DeleteOnSubmit(myGroup);
+            db.SubmitChanges();
+        }
+
+        public void deleteUserFromGroup(Group myGroup, User user)
+        {
+            UserGroup userGroup = (from userGroups in db.UserGroups where userGroups.groupId == myGroup.groupId && userGroups.userId == user.userId select userGroups).First();
+            myGroup.usersAmmount -= 1;
+            if (myGroup.usersAmmount == 0)
+                deleteGroup(myGroup);
+            db.UserGroups.DeleteOnSubmit(userGroup);
             db.SubmitChanges();
         }
     }

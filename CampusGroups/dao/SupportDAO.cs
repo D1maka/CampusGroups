@@ -39,5 +39,25 @@ namespace CampusGroups.dao
             var query = (from roles in db.Roles where roles.roleId == 2 select roles).First();
             return query;
         }
+
+        public void insertRequest(User user, Group myGroup)
+        {
+            GroupRequest request = new GroupRequest();
+            request.date = System.DateTime.Now;
+            request.groupId = myGroup.groupId;
+            request.userId = user.userId;
+            request.processed = 0;
+            db.GroupRequests.InsertOnSubmit(request);
+            db.SubmitChanges();
+        }
+
+        public List<GroupRequest> getGroupRequestByGroup(Group myGroup)
+        {
+            var query = (from request in db.GroupRequests where request.groupId == myGroup.groupId select request);
+            if(query.Any())
+                return query.ToList();
+            else
+                return null;
+        }
     }
 }
