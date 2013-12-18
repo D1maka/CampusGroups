@@ -23,6 +23,7 @@ namespace CampusGroups
             {
                 GroupItemControl groupControl = (GroupItemControl) Page.LoadControl(@"~\GroupItemControl.ascx");
                 groupControl.currentGroup = group;
+                groupControl.OuterPage = "UserPage";
                 this.PlaceHolderUserGroups.Controls.Add(groupControl);
                
             }

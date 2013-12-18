@@ -31,6 +31,15 @@ namespace CampusGroups.dao
             db.SubmitChanges();
         }
 
+        public Post getPostByPostUserGroupTime(int userId, int groupId, DateTime date)
+        {
+            var query = from post in db.Posts where post.authorId == userId && post.groupId == groupId && post.postDate == date select post;
+            if (query.Any())
+                return query.First();
+            else
+                return null;
+        }
+
         public List<Post> getChildPost(Post post)
         {
             var postsList = (from posts in db.Posts where posts.parentPostId == post.postId select posts).ToList();

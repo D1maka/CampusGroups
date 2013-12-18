@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="GroupMemberControl.ascx.cs" Inherits="CampusGroups.GroupMemberControl" %>
 <asp:Image ID="avatarImg" runat="server" />
-&nbsp;<asp:Label ID="usernameLbl" runat="server" Text=""></asp:Label>
+&nbsp;<asp:Label ID="userNameLbl" runat="server" Text=""></asp:Label>
 &nbsp;
 <br />
 <asp:Label ID="userProfileType" runat="server" Text=""></asp:Label>

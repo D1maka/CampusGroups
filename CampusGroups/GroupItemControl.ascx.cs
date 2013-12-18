@@ -17,9 +17,14 @@ namespace CampusGroups
             set; 
         }
 
+        public string OuterPage
+        { get; set;}
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.groupNameLbl.Text = currentGroup.groupName;
+            this.groupNameBtn.Text = currentGroup.groupName;
+            if (OuterPage.Equals("AllGroups"))
+                leaveGroupButton.Visible = false;
         }
 
         protected void leaveGroupButton_Click(object sender, ImageClickEventArgs e)
@@ -29,6 +34,13 @@ namespace CampusGroups
             GroupDAO groupDAO = GroupDAO.getGroupDAO();
             User user = usrDAO.getGroupsUserByCampusAccountId(id);
             groupDAO.deleteUserFromGroup(currentGroup, user);
+            Response.Redirect("~/UserPage.aspx");
+        }
+
+        protected void groupNameBtn_Click(object sender, EventArgs e)
+        {
+            Session["groupId"] = currentGroup.groupId;
+            Response.Redirect(@"~\GroupMainPage.aspx");
         }
     }
 }

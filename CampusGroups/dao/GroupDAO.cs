@@ -29,6 +29,15 @@ namespace CampusGroups.dao
             return instance;
         }
 
+        public Group getGroupByGroupId(int id)
+        {
+            var query = from myGroup in db.Groups where myGroup.groupId == id select myGroup;
+            if(query.Any())
+                return query.First();
+            else
+                return null;
+        }
+
         public void addGroup(Group group)
         {
             db.Groups.InsertOnSubmit(group);
@@ -100,6 +109,45 @@ namespace CampusGroups.dao
             if (myGroup.usersAmmount == 0)
                 deleteGroup(myGroup);
             db.UserGroups.DeleteOnSubmit(userGroup);
+            db.SubmitChanges();
+        }
+
+        public List<Invitation> getUnprocessedGroupsInvitationsByUser(User user)
+        {
+            var query = (from myInvitation in db.Invitations
+                         join myUser in db.Users on myInvitation.userId equals myUser.userId
+                         where myUser.userId == user.userId && myInvitation.processed == 0
+                         select myInvitation);
+            if (query.Any())
+                return query.ToList();
+            else
+                return null;
+        }
+
+        public Invitation getInvitationByGroupAndUser(User user, Group invgroup)
+        {
+            var query = (from myGroup in db.Groups join myInvitation in db.Invitations on myGroup.groupId equals myInvitation.groupId
+                         join myUser in db.Users on myInvitation.userId equals myUser.userId
+                         where myUser.userId == user.userId && myInvitation.processed == 0 && myGroup.groupId == invgroup.groupId
+                         select myInvitation);
+            if (query.Any())
+                return query.First();
+            else
+                return null;
+        }
+
+        public void processInvitation(Invitation inv, int agreement)
+        {
+            inv.processed = 1;
+            if (agreement == 1)
+            {
+                UserDAO userDAO = UserDAO.getUserDAO();
+                User usr = userDAO.getGroupUserByUserId(inv.userId);
+                Group gr = getGroupByGroupId(inv.groupId);
+                SupportDAO suppDAO = SupportDAO.getSupportDAO();
+                Role role = suppDAO.getUserRole();
+                addUser(gr, usr, role);
+            }
             db.SubmitChanges();
         }
     }

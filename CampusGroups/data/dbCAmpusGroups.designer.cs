@@ -57,6 +57,9 @@ namespace CampusGroups.data
     partial void InsertGroup(Group instance);
     partial void UpdateGroup(Group instance);
     partial void DeleteGroup(Group instance);
+    partial void InsertInvitation(Invitation instance);
+    partial void UpdateInvitation(Invitation instance);
+    partial void DeleteInvitation(Invitation instance);
     #endregion
 		
 		public dbCAmpusGroupsDataContext() : 
@@ -158,6 +161,14 @@ namespace CampusGroups.data
 			get
 			{
 				return this.GetTable<Group>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Invitation> Invitations
+		{
+			get
+			{
+				return this.GetTable<Invitation>();
 			}
 		}
 	}
@@ -1433,6 +1444,10 @@ namespace CampusGroups.data
 		
 		private EntitySet<GroupRequest> _GroupRequests;
 		
+		private EntitySet<Invitation> _Invitations;
+		
+		private EntitySet<Invitation> _Invitations1;
+		
 		private EntityRef<Status> _Status;
 		
     #region Extensibility Method Definitions
@@ -1454,6 +1469,8 @@ namespace CampusGroups.data
 			this._UserGroups = new EntitySet<UserGroup>(new Action<UserGroup>(this.attach_UserGroups), new Action<UserGroup>(this.detach_UserGroups));
 			this._Posts = new EntitySet<Post>(new Action<Post>(this.attach_Posts), new Action<Post>(this.detach_Posts));
 			this._GroupRequests = new EntitySet<GroupRequest>(new Action<GroupRequest>(this.attach_GroupRequests), new Action<GroupRequest>(this.detach_GroupRequests));
+			this._Invitations = new EntitySet<Invitation>(new Action<Invitation>(this.attach_Invitations), new Action<Invitation>(this.detach_Invitations));
+			this._Invitations1 = new EntitySet<Invitation>(new Action<Invitation>(this.attach_Invitations1), new Action<Invitation>(this.detach_Invitations1));
 			this._Status = default(EntityRef<Status>);
 			OnCreated();
 		}
@@ -1581,6 +1598,32 @@ namespace CampusGroups.data
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_Invitation", Storage="_Invitations", ThisKey="userId", OtherKey="userId")]
+		public EntitySet<Invitation> Invitations
+		{
+			get
+			{
+				return this._Invitations;
+			}
+			set
+			{
+				this._Invitations.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_Invitation1", Storage="_Invitations1", ThisKey="userId", OtherKey="moderatorId")]
+		public EntitySet<Invitation> Invitations1
+		{
+			get
+			{
+				return this._Invitations1;
+			}
+			set
+			{
+				this._Invitations1.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Status_User", Storage="_Status", ThisKey="statusId", OtherKey="statusId", IsForeignKey=true)]
 		public Status Status
 		{
@@ -1669,6 +1712,30 @@ namespace CampusGroups.data
 		{
 			this.SendPropertyChanging();
 			entity.User = null;
+		}
+		
+		private void attach_Invitations(Invitation entity)
+		{
+			this.SendPropertyChanging();
+			entity.User = this;
+		}
+		
+		private void detach_Invitations(Invitation entity)
+		{
+			this.SendPropertyChanging();
+			entity.User = null;
+		}
+		
+		private void attach_Invitations1(Invitation entity)
+		{
+			this.SendPropertyChanging();
+			entity.User1 = this;
+		}
+		
+		private void detach_Invitations1(Invitation entity)
+		{
+			this.SendPropertyChanging();
+			entity.User1 = null;
 		}
 	}
 	
@@ -1934,6 +2001,8 @@ namespace CampusGroups.data
 		
 		private EntitySet<GroupRequest> _GroupRequests;
 		
+		private EntitySet<Invitation> _Invitations;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -1955,6 +2024,7 @@ namespace CampusGroups.data
 			this._UserGroups = new EntitySet<UserGroup>(new Action<UserGroup>(this.attach_UserGroups), new Action<UserGroup>(this.detach_UserGroups));
 			this._Posts = new EntitySet<Post>(new Action<Post>(this.attach_Posts), new Action<Post>(this.detach_Posts));
 			this._GroupRequests = new EntitySet<GroupRequest>(new Action<GroupRequest>(this.attach_GroupRequests), new Action<GroupRequest>(this.detach_GroupRequests));
+			this._Invitations = new EntitySet<Invitation>(new Action<Invitation>(this.attach_Invitations), new Action<Invitation>(this.detach_Invitations));
 			OnCreated();
 		}
 		
@@ -2097,6 +2167,19 @@ namespace CampusGroups.data
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Group_Invitation", Storage="_Invitations", ThisKey="groupId", OtherKey="groupId")]
+		public EntitySet<Invitation> Invitations
+		{
+			get
+			{
+				return this._Invitations;
+			}
+			set
+			{
+				this._Invitations.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -2151,6 +2234,323 @@ namespace CampusGroups.data
 		{
 			this.SendPropertyChanging();
 			entity.Group = null;
+		}
+		
+		private void attach_Invitations(Invitation entity)
+		{
+			this.SendPropertyChanging();
+			entity.Group = this;
+		}
+		
+		private void detach_Invitations(Invitation entity)
+		{
+			this.SendPropertyChanging();
+			entity.Group = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Invitation")]
+	public partial class Invitation : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _invitationId;
+		
+		private int _groupId;
+		
+		private int _userId;
+		
+		private int _moderatorId;
+		
+		private System.DateTime _date;
+		
+		private int _processed;
+		
+		private EntityRef<Group> _Group;
+		
+		private EntityRef<User> _User;
+		
+		private EntityRef<User> _User1;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OninvitationIdChanging(int value);
+    partial void OninvitationIdChanged();
+    partial void OngroupIdChanging(int value);
+    partial void OngroupIdChanged();
+    partial void OnuserIdChanging(int value);
+    partial void OnuserIdChanged();
+    partial void OnmoderatorIdChanging(int value);
+    partial void OnmoderatorIdChanged();
+    partial void OndateChanging(System.DateTime value);
+    partial void OndateChanged();
+    partial void OnprocessedChanging(int value);
+    partial void OnprocessedChanged();
+    #endregion
+		
+		public Invitation()
+		{
+			this._Group = default(EntityRef<Group>);
+			this._User = default(EntityRef<User>);
+			this._User1 = default(EntityRef<User>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_invitationId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int invitationId
+		{
+			get
+			{
+				return this._invitationId;
+			}
+			set
+			{
+				if ((this._invitationId != value))
+				{
+					this.OninvitationIdChanging(value);
+					this.SendPropertyChanging();
+					this._invitationId = value;
+					this.SendPropertyChanged("invitationId");
+					this.OninvitationIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_groupId", DbType="Int NOT NULL")]
+		public int groupId
+		{
+			get
+			{
+				return this._groupId;
+			}
+			set
+			{
+				if ((this._groupId != value))
+				{
+					if (this._Group.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OngroupIdChanging(value);
+					this.SendPropertyChanging();
+					this._groupId = value;
+					this.SendPropertyChanged("groupId");
+					this.OngroupIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_userId", DbType="Int NOT NULL")]
+		public int userId
+		{
+			get
+			{
+				return this._userId;
+			}
+			set
+			{
+				if ((this._userId != value))
+				{
+					if (this._User.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnuserIdChanging(value);
+					this.SendPropertyChanging();
+					this._userId = value;
+					this.SendPropertyChanged("userId");
+					this.OnuserIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_moderatorId", DbType="Int NOT NULL")]
+		public int moderatorId
+		{
+			get
+			{
+				return this._moderatorId;
+			}
+			set
+			{
+				if ((this._moderatorId != value))
+				{
+					if (this._User1.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnmoderatorIdChanging(value);
+					this.SendPropertyChanging();
+					this._moderatorId = value;
+					this.SendPropertyChanged("moderatorId");
+					this.OnmoderatorIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_date", DbType="DateTime NOT NULL")]
+		public System.DateTime date
+		{
+			get
+			{
+				return this._date;
+			}
+			set
+			{
+				if ((this._date != value))
+				{
+					this.OndateChanging(value);
+					this.SendPropertyChanging();
+					this._date = value;
+					this.SendPropertyChanged("date");
+					this.OndateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_processed", DbType="Int NOT NULL")]
+		public int processed
+		{
+			get
+			{
+				return this._processed;
+			}
+			set
+			{
+				if ((this._processed != value))
+				{
+					this.OnprocessedChanging(value);
+					this.SendPropertyChanging();
+					this._processed = value;
+					this.SendPropertyChanged("processed");
+					this.OnprocessedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Group_Invitation", Storage="_Group", ThisKey="groupId", OtherKey="groupId", IsForeignKey=true)]
+		public Group Group
+		{
+			get
+			{
+				return this._Group.Entity;
+			}
+			set
+			{
+				Group previousValue = this._Group.Entity;
+				if (((previousValue != value) 
+							|| (this._Group.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Group.Entity = null;
+						previousValue.Invitations.Remove(this);
+					}
+					this._Group.Entity = value;
+					if ((value != null))
+					{
+						value.Invitations.Add(this);
+						this._groupId = value.groupId;
+					}
+					else
+					{
+						this._groupId = default(int);
+					}
+					this.SendPropertyChanged("Group");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_Invitation", Storage="_User", ThisKey="userId", OtherKey="userId", IsForeignKey=true)]
+		public User User
+		{
+			get
+			{
+				return this._User.Entity;
+			}
+			set
+			{
+				User previousValue = this._User.Entity;
+				if (((previousValue != value) 
+							|| (this._User.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._User.Entity = null;
+						previousValue.Invitations.Remove(this);
+					}
+					this._User.Entity = value;
+					if ((value != null))
+					{
+						value.Invitations.Add(this);
+						this._userId = value.userId;
+					}
+					else
+					{
+						this._userId = default(int);
+					}
+					this.SendPropertyChanged("User");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_Invitation1", Storage="_User1", ThisKey="moderatorId", OtherKey="userId", IsForeignKey=true)]
+		public User User1
+		{
+			get
+			{
+				return this._User1.Entity;
+			}
+			set
+			{
+				User previousValue = this._User1.Entity;
+				if (((previousValue != value) 
+							|| (this._User1.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._User1.Entity = null;
+						previousValue.Invitations1.Remove(this);
+					}
+					this._User1.Entity = value;
+					if ((value != null))
+					{
+						value.Invitations1.Add(this);
+						this._moderatorId = value.userId;
+					}
+					else
+					{
+						this._moderatorId = default(int);
+					}
+					this.SendPropertyChanged("User1");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 }

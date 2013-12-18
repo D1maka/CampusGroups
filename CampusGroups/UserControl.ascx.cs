@@ -32,7 +32,7 @@ namespace CampusGroups
                 this.userDepartment.Text = department;
                 this.avatarImg.Height = 128;
                 this.avatarImg.Width = 128;
-                this.avatarImg.ImageUrl = UserDAO.DEFAULT_AVATAR_PATH;
+                this.avatarImg.ImageUrl = user.avatarLink;
             }
         }
 
@@ -63,6 +63,11 @@ namespace CampusGroups
         protected void viewAllGroupsBtn_Click(object sender, ImageClickEventArgs e)
         {
             Response.Redirect("~/AllGroupsPage.aspx");
+        }
+
+        protected void setAvatarBtn_Click(object sender, ImageClickEventArgs e)
+        {
+            Response.Redirect("~/ChangeUserAvatarPage.aspx");
         }
     }
 }

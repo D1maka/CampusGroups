@@ -49,6 +49,21 @@ namespace CampusGroups.dao
             return id;         
         }
 
+        public void updateUserAvatar(User user, string newLink)
+        {
+            user.avatarLink = newLink;
+            db.SubmitChanges();
+        }
+
+        public User getGroupUserByUserId(int id)
+        {
+            var query = from user in db.Users where user.userId == id select user;
+            if (query.Any())
+                return query.First();
+            else
+                return null;
+        }
+
         public String getUserNameByCampusUserAccountId(int id)
         {
             String name = "";

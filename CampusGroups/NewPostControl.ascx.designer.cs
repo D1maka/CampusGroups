@@ -10,51 +10,60 @@
 namespace CampusGroups {
     
     
-    public partial class GroupMemberControl {
+    public partial class NewPostControl {
         
         /// <summary>
-        /// avatarImg control.
+        /// postTxtBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image avatarImg;
+        protected global::System.Web.UI.WebControls.TextBox postTxtBox;
         
         /// <summary>
-        /// userNameLbl control.
+        /// PlaceHolder1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label userNameLbl;
+        protected global::System.Web.UI.WebControls.PlaceHolder PlaceHolder1;
         
         /// <summary>
-        /// userProfileType control.
+        /// addPostBrn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label userProfileType;
+        protected global::System.Web.UI.WebControls.Button addPostBrn;
         
         /// <summary>
-        /// userDepartment control.
+        /// addAttachmentBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label userDepartment;
+        protected global::System.Web.UI.WebControls.Button addAttachmentBtn;
         
         /// <summary>
-        /// deleteBtn control.
+        /// FileUploadControl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton deleteBtn;
+        protected global::System.Web.UI.WebControls.FileUpload FileUploadControl;
+        
+        /// <summary>
+        /// StatusLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label StatusLabel;
     }
 }

@@ -135,7 +135,10 @@
     <Content Include="Account\Register.aspx" />
     <Content Include="Account\RegisterExternalLogin.aspx" />
     <Content Include="AllGroupsPage.aspx" />
+    <Content Include="AttachmentControl.ascx" />
     <Content Include="avatars\noavatar.jpg" />
+    <Content Include="ChangeAvatarControl.ascx" />
+    <Content Include="ChangeUserAvatarPage.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
@@ -195,9 +198,14 @@
     <Content Include="CreateGroupControl.ascx" />
     <Content Include="CreateGroupPage.aspx" />
     <Content Include="GroupItemControl.ascx" />
+    <Content Include="GroupMainControl.ascx" />
+    <Content Include="GroupMainPage.aspx" />
     <Content Include="GroupMemberControl.ascx" />
     <Content Include="GroupPage.aspx" />
     <Content Include="GroupRequestControl.ascx" />
+    <Content Include="icons\close.png" />
+    <Content Include="icons\group.png" />
+    <Content Include="icons\new_group.png" />
     <Content Include="Images\accent.png" />
     <Content Include="Images\bullet.png" />
     <Content Include="Images\heroAccent.png" />
@@ -215,6 +223,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="LoginPage.aspx" />
+    <Content Include="NewPostControl.ascx" />
     <Content Include="packages.config" />
     <Content Include="data\dbCAmpusGroups.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
@@ -222,6 +231,7 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="UserControl.ascx" />
+    <Content Include="UserInvitationsPage.aspx" />
     <Content Include="UserPage.aspx" />
     <Content Include="WebForm1.aspx" />
     <Content Include="LoginControl.ascx" />
@@ -322,6 +332,27 @@
       <DependentUpon>RegisterExternalLogin.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="AttachmentControl.ascx.cs">
+      <DependentUpon>AttachmentControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AttachmentControl.ascx.designer.cs">
+      <DependentUpon>AttachmentControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ChangeAvatarControl.ascx.cs">
+      <DependentUpon>ChangeAvatarControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ChangeAvatarControl.ascx.designer.cs">
+      <DependentUpon>ChangeAvatarControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ChangeUserAvatarPage.aspx.cs">
+      <DependentUpon>ChangeUserAvatarPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ChangeUserAvatarPage.aspx.designer.cs">
+      <DependentUpon>ChangeUserAvatarPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="CampusGroupsMasterPage.Master.cs">
       <DependentUpon>CampusGroupsMasterPage.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -377,6 +408,20 @@
     <Compile Include="GroupItemControl.ascx.designer.cs">
       <DependentUpon>GroupItemControl.ascx</DependentUpon>
     </Compile>
+    <Compile Include="GroupMainControl.ascx.cs">
+      <DependentUpon>GroupMainControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GroupMainControl.ascx.designer.cs">
+      <DependentUpon>GroupMainControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="GroupMainPage.aspx.cs">
+      <DependentUpon>GroupMainPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GroupMainPage.aspx.designer.cs">
+      <DependentUpon>GroupMainPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="GroupMemberControl.ascx.cs">
       <DependentUpon>GroupMemberControl.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -406,6 +451,13 @@
     <Compile Include="LoginPage.aspx.designer.cs">
       <DependentUpon>LoginPage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="NewPostControl.ascx.cs">
+      <DependentUpon>NewPostControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NewPostControl.ascx.designer.cs">
+      <DependentUpon>NewPostControl.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
@@ -427,6 +479,13 @@
     </Compile>
     <Compile Include="UserControl.ascx.designer.cs">
       <DependentUpon>UserControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserInvitationsPage.aspx.cs">
+      <DependentUpon>UserInvitationsPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserInvitationsPage.aspx.designer.cs">
+      <DependentUpon>UserInvitationsPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="UserPage.aspx.cs">
       <DependentUpon>UserPage.aspx</DependentUpon>
@@ -459,7 +518,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="icons\" />
+    <Folder Include="files\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Account\Web.config" />

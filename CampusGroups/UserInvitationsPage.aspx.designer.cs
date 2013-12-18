@@ -10,33 +10,24 @@
 namespace CampusGroups {
     
     
-    public partial class GroupItemControl {
+    public partial class UserInvitationsPage {
         
         /// <summary>
-        /// groupAvatar control.
+        /// PlaceHolderUserControl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image groupAvatar;
+        protected global::System.Web.UI.WebControls.PlaceHolder PlaceHolderUserControl;
         
         /// <summary>
-        /// groupNameBtn control.
+        /// PlaceHolderInvitations control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton groupNameBtn;
-        
-        /// <summary>
-        /// leaveGroupButton control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton leaveGroupButton;
+        protected global::System.Web.UI.WebControls.PlaceHolder PlaceHolderInvitations;
     }
 }

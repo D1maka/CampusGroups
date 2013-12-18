@@ -44,7 +44,7 @@
         <elementListCompartment Id="29f58e8f-cc08-4124-9075-e4fc05376a70" absoluteBounds="3.515, 4.335, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(6.25 : 3.71875); (5.80208333333333 : 3.71875 : JumpStart); (5.57291666666667 : 3.71875 : JumpEnd); (2.59375 : 3.71875); (2.59375 : 3.0112939453125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(6.25 : 3.71875); (5.91146058333333 : 3.71875 : JumpStart); (5.57291666666667 : 3.71875 : JumpEnd); (3.33333333333333 : 3.71875 : JumpStart); (3.16666666666667 : 3.71875 : JumpEnd); (3 : 3.71875); (3 : 3.0112939453125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/dbCAmpusGroupsDataContext/Post/Post_Attachment" />
       <nodes>
         <classShapeMoniker Id="3a8c1f5f-7199-4743-80db-d4350028a820" />
@@ -65,14 +65,14 @@
         <classShapeMoniker Id="5d2c4d28-957d-4012-87ec-a140211c4862" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 3.875); (5.65982443490112 : 3.71517556509888 : JumpStart); (5.77767556509888 : 3.59732443490112 : JumpEnd); (5.875 : 3.5); (5.875 : 3.20359537760417); (6.25 : 2.82859537760417)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(5.5 : 3.875); (5.65982393490112 : 3.71517606509888 : JumpStart); (5.77767506509888 : 3.59732493490112 : JumpEnd); (5.875 : 3.5); (5.875 : 3.20359537760417); (6.25 : 2.82859537760417)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/dbCAmpusGroupsDataContext/User/User_UserGroup" />
       <nodes>
         <classShapeMoniker Id="07ff2743-27c3-49ae-b750-4824b459dd98" />
         <classShapeMoniker Id="5d2c4d28-957d-4012-87ec-a140211c4862" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 5.10822324934896); (5.63541666666667 : 5.10822324934896 : JumpStart); (5.80208333333333 : 5.10822324934896 : JumpEnd); (6.25 : 5.10822324934896)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(5.5 : 5.10822324934896); (5.63541616666667 : 5.10822324934896 : JumpStart); (5.91146058333333 : 5.10822324934896 : JumpEnd); (6.25 : 5.10822324934896)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/dbCAmpusGroupsDataContext/User/User_Post" />
       <nodes>
         <classShapeMoniker Id="07ff2743-27c3-49ae-b750-4824b459dd98" />
@@ -92,7 +92,7 @@
         <elementListCompartment Id="10c225ab-9f1e-4e87-8096-85eb5ff1fed0" absoluteBounds="1.6400000000000001, 7.335, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(4.21875 : 5.45359537760417); (4.21875 : 7.28647170247396); (3.625 : 7.28647170247396)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(4.0937505 : 5.45359537760417); (4.0937505 : 7.53125); (3.95833333333333 : 7.53125 : JumpStart); (3.79166666666667 : 7.53125 : JumpEnd); (3.625 : 7.53125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/dbCAmpusGroupsDataContext/User/User_GroupRequest" />
       <nodes>
         <classShapeMoniker Id="07ff2743-27c3-49ae-b750-4824b459dd98" />
@@ -105,25 +105,52 @@
         <elementListCompartment Id="0f0b3fe2-f9d7-4748-ac5b-9437be0adc05" absoluteBounds="3.8899999999999997, 1.585, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(5.875 : 2.00804518880208); (6.25 : 2.00804518880208)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(5.875 : 2.00804518880208); (6.25 : 2.00804518880208)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/dbCAmpusGroupsDataContext/Group/Group_UserGroup" />
       <nodes>
         <classShapeMoniker Id="f1898313-88aa-4bf3-bb32-d7acbad10e26" />
         <classShapeMoniker Id="5d2c4d28-957d-4012-87ec-a140211c4862" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.71875 : 2.89589680989583); (5.71875 : 5.55214680989583); (6.25 : 5.55214680989583)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(5.7187495 : 2.89589680989583); (5.7187495 : 5.55214680989583); (5.74479391666667 : 5.55214680989583 : JumpStart); (5.91146058333333 : 5.55214680989583 : JumpEnd); (6.25 : 5.55214680989583)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/dbCAmpusGroupsDataContext/Group/Group_Post" />
       <nodes>
         <classShapeMoniker Id="f1898313-88aa-4bf3-bb32-d7acbad10e26" />
         <classShapeMoniker Id="3a8c1f5f-7199-4743-80db-d4350028a820" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(3.875 : 1.34375); (1.65625 : 1.34375); (1.65625 : 6.875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(4.76562275 : 2.89589680989583); (4.76562275 : 3.375); (3.25 : 3.375); (3.25 : 6.625); (3.875 : 6.625); (3.875 : 8.11982540494792); (3.625 : 8.11982540494792)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/dbCAmpusGroupsDataContext/Group/Group_GroupRequest" />
       <nodes>
         <classShapeMoniker Id="f1898313-88aa-4bf3-bb32-d7acbad10e26" />
         <classShapeMoniker Id="376eb260-4aa9-4b24-b253-33bb59f2abad" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="7b004674-30bf-4efb-a252-bea66a64198e" absoluteBounds="0.5, 4.25, 2, 1.9631982421875">
+      <DataClassMoniker Name="/dbCAmpusGroupsDataContext/Invitation" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f73e52b8-821b-4171-a5f0-5e2ec9b86973" absoluteBounds="0.51500000000000012, 4.71, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.82812725 : 2.89589680989583); (5.82812725 : 5.88267252604166); (5.14583333333333 : 5.88267252604166 : JumpStart); (4.97916666666667 : 5.88267252604166 : JumpEnd); (4.17708383333333 : 5.88267252604166 : JumpStart); (4.01041716666667 : 5.88267252604166 : JumpEnd); (3.33333333333333 : 5.88267252604166 : JumpStart); (3.16666666666667 : 5.88267252604166 : JumpEnd); (2.5 : 5.88267252604166)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/dbCAmpusGroupsDataContext/Group/Group_Invitation" />
+      <nodes>
+        <classShapeMoniker Id="f1898313-88aa-4bf3-bb32-d7acbad10e26" />
+        <classShapeMoniker Id="7b004674-30bf-4efb-a252-bea66a64198e" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(3.5 : 4.85179768880208); (3.33333333333333 : 4.85179768880208 : JumpStart); (3.16666666666667 : 4.85179768880208 : JumpEnd); (2.5 : 4.85179768880208)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/dbCAmpusGroupsDataContext/User/User_Invitation" />
+      <nodes>
+        <classShapeMoniker Id="07ff2743-27c3-49ae-b750-4824b459dd98" />
+        <classShapeMoniker Id="7b004674-30bf-4efb-a252-bea66a64198e" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(3.5 : 4.48839884440104); (3.33333333333333 : 4.48839884440104 : JumpStart); (3.16666666666667 : 4.48839884440104 : JumpEnd); (2.5 : 4.48839884440104)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/dbCAmpusGroupsDataContext/User/User_Invitation1" />
+      <nodes>
+        <classShapeMoniker Id="07ff2743-27c3-49ae-b750-4824b459dd98" />
+        <classShapeMoniker Id="7b004674-30bf-4efb-a252-bea66a64198e" />
       </nodes>
     </associationConnector>
   </nestedChildShapes>

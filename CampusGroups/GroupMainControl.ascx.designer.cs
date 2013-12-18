@@ -10,51 +10,69 @@
 namespace CampusGroups {
     
     
-    public partial class GroupMemberControl {
+    public partial class GroupMainControl {
         
         /// <summary>
-        /// avatarImg control.
+        /// groupAvatar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image avatarImg;
+        protected global::System.Web.UI.WebControls.Image groupAvatar;
         
         /// <summary>
-        /// userNameLbl control.
+        /// groupNameLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label userNameLbl;
+        protected global::System.Web.UI.WebControls.Label groupNameLabel;
         
         /// <summary>
-        /// userProfileType control.
+        /// groupDescriptionLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label userProfileType;
+        protected global::System.Web.UI.WebControls.Label groupDescriptionLabel;
         
         /// <summary>
-        /// userDepartment control.
+        /// viewMembersBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label userDepartment;
+        protected global::System.Web.UI.WebControls.ImageButton viewMembersBtn;
         
         /// <summary>
-        /// deleteBtn control.
+        /// viewRequestBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton deleteBtn;
+        protected global::System.Web.UI.WebControls.ImageButton viewRequestBtn;
+        
+        /// <summary>
+        /// sendInvitationsBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton sendInvitationsBtn;
+        
+        /// <summary>
+        /// viewPostsBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton viewPostsBtn;
     }
 }

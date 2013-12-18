@@ -70,6 +70,8 @@
       <Association Name="User_UserGroup" Member="UserGroups" ThisKey="userId" OtherKey="userId" Type="UserGroup" />
       <Association Name="User_Post" Member="Posts" ThisKey="userId" OtherKey="authorId" Type="Post" />
       <Association Name="User_GroupRequest" Member="GroupRequests" ThisKey="userId" OtherKey="userId" Type="GroupRequest" />
+      <Association Name="User_Invitation" Member="Invitations" ThisKey="userId" OtherKey="userId" Type="Invitation" />
+      <Association Name="User_Invitation1" Member="Invitations1" ThisKey="userId" OtherKey="moderatorId" Type="Invitation" />
       <Association Name="Status_User" Member="Status" ThisKey="statusId" OtherKey="statusId" Type="Status" IsForeignKey="true" />
     </Type>
   </Table>
@@ -94,6 +96,20 @@
       <Association Name="Group_UserGroup" Member="UserGroups" ThisKey="groupId" OtherKey="groupId" Type="UserGroup" />
       <Association Name="Group_Post" Member="Posts" ThisKey="groupId" OtherKey="groupId" Type="Post" />
       <Association Name="Group_GroupRequest" Member="GroupRequests" ThisKey="groupId" OtherKey="groupId" Type="GroupRequest" />
+      <Association Name="Group_Invitation" Member="Invitations" ThisKey="groupId" OtherKey="groupId" Type="Invitation" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Invitation" Member="Invitations">
+    <Type Name="Invitation">
+      <Column Name="invitationId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="groupId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="userId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="moderatorId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="processed" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Group_Invitation" Member="Group" ThisKey="groupId" OtherKey="groupId" Type="Group" IsForeignKey="true" />
+      <Association Name="User_Invitation" Member="User" ThisKey="userId" OtherKey="userId" Type="User" IsForeignKey="true" />
+      <Association Name="User_Invitation1" Member="User1" ThisKey="moderatorId" OtherKey="userId" Type="User" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

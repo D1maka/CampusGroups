@@ -59,5 +59,11 @@ namespace CampusGroups.dao
             else
                 return null;
         }
+
+        public void insertAttachment(Attachment att)
+        {
+            db.Attachments.InsertOnSubmit(att);
+            db.SubmitChanges();
+        }
     }
 }

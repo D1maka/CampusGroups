@@ -13,7 +13,7 @@ namespace CampusGroups
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Label1.Text = "ololo";
+          
         }
 
         protected void createGroupBtn_Click(object sender, EventArgs e)
@@ -31,16 +31,10 @@ namespace CampusGroups
                 User user = userDAO.getGroupsUserByCampusAccountId(Int32.Parse(Session["userCampusId"].ToString()));
 
                 groupDAO.insertGroup(newGroup, user);
-                Label1.Text = newGroup.groupName + " " + newGroup.groupDescription + " " + newGroup.groupCreationDate.ToString() + " " + newGroup.usersAmmount;
                
             } else {
                
             }
-        }
-
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-            this.Label1.Text = "ololo1";
         }
     }
 }
