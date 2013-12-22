@@ -222,6 +222,7 @@
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="InviteUserControl.ascx" />
     <Content Include="LoginPage.aspx" />
     <Content Include="NewPostControl.ascx" />
     <Content Include="packages.config" />
@@ -442,6 +443,13 @@
     </Compile>
     <Compile Include="GroupRequestControl.ascx.designer.cs">
       <DependentUpon>GroupRequestControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="InviteUserControl.ascx.cs">
+      <DependentUpon>InviteUserControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InviteUserControl.ascx.designer.cs">
+      <DependentUpon>InviteUserControl.ascx</DependentUpon>
     </Compile>
     <Compile Include="logic\ViewHelper.cs" />
     <Compile Include="LoginPage.aspx.cs">
