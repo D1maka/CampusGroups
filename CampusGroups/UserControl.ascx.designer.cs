@@ -40,6 +40,15 @@ namespace CampusGroups {
         protected global::System.Web.UI.WebControls.Label userProfileType;
         
         /// <summary>
+        /// userDepartment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label userDepartment;
+        
+        /// <summary>
         /// myGroupsBtn control.
         /// </summary>
         /// <remarks>
@@ -76,21 +85,12 @@ namespace CampusGroups {
         protected global::System.Web.UI.WebControls.ImageButton newGroupBtn;
         
         /// <summary>
-        /// userDepartment control.
+        /// myInvitationsButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label userDepartment;
-        
-        /// <summary>
-        /// PlaceHolderNestedControl control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder PlaceHolderNestedControl;
+        protected global::System.Web.UI.WebControls.ImageButton myInvitationsButton;
     }
 }

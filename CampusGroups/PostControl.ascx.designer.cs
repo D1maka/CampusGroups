@@ -10,60 +10,42 @@
 namespace CampusGroups {
     
     
-    public partial class NewPostControl {
+    public partial class PostControl {
         
         /// <summary>
-        /// postTxtBox control.
+        /// postDateLbl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox postTxtBox;
+        protected global::System.Web.UI.WebControls.Label postDateLbl;
         
         /// <summary>
-        /// PlaceHolderAtt control.
+        /// avatar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder PlaceHolderAtt;
+        protected global::System.Web.UI.WebControls.Image avatar;
         
         /// <summary>
-        /// addPostBrn control.
+        /// postAuthorNameLbl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button addPostBrn;
+        protected global::System.Web.UI.WebControls.Label postAuthorNameLbl;
         
         /// <summary>
-        /// addAttachmentBtn control.
+        /// postTextLbl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button addAttachmentBtn;
-        
-        /// <summary>
-        /// FileUploadControl control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload FileUploadControl;
-        
-        /// <summary>
-        /// StatusLabel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label StatusLabel;
+        protected global::System.Web.UI.WebControls.Label postTextLbl;
     }
 }

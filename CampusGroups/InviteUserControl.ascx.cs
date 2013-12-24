@@ -11,6 +11,9 @@ namespace CampusGroups
 {
     public partial class InviteUserControl : System.Web.UI.UserControl
     {
+        public User usr
+        { get; set; }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["userCampusId"] == null)
@@ -19,19 +22,33 @@ namespace CampusGroups
             }
             else
             {
-                int id = Int32.Parse(Session["userCampusId"].ToString());
                 UserDAO usrDAO = UserDAO.getUserDAO();
-                User user = usrDAO.getGroupsUserByCampusAccountId(id);
-                String name = usrDAO.getUserNameByCampusUserAccountId(id);
-                String profile = usrDAO.getProfileNameByCampusUserAccountId(id);
-                String department = usrDAO.getSubdivisionNameByCampusUserAccountId(id);
+                SupportDAO suppDAO = SupportDAO.getSupportDAO();
+                int campusId = usrDAO.getCampusUserIdByGroupsUserId(usr.userId);
+                String name = usrDAO.getUserNameByCampusUserAccountId(campusId);
+                String profile = usrDAO.getProfileNameByCampusUserAccountId(campusId);
+                String department = usrDAO.getSubdivisionNameByCampusUserAccountId(campusId);
                 this.usernameLbl.Text = name;
                 this.userProfileType.Text = profile;
                 this.userDepartment.Text = department;
                 this.avatarImg.Height = 128;
                 this.avatarImg.Width = 128;
-                this.avatarImg.ImageUrl = user.avatarLink;
+                this.avatarImg.ImageUrl = usr.avatarLink;
+               // this.DropDownListRoles.DataSource = suppDAO.getRoles();
             }
+        }
+
+        protected void inviteBtn_Click(object sender, ImageClickEventArgs e)
+        {
+            GroupDAO groupDAO = GroupDAO.getGroupDAO();
+            Invitation inv = new Invitation();
+            inv.groupId = Int32.Parse(Session["groupId"].ToString());
+            inv.moderatorId = Int32.Parse(Session["userId"].ToString());
+            inv.userId = usr.userId;
+            inv.processed = 0;
+            inv.date = System.DateTime.Now;
+            groupDAO.insertInvitation(inv);
+            this.inviteBtn.Visible = false;
         }
     }
 }

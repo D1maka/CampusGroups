@@ -90,6 +90,15 @@ namespace CampusGroups.dao
             db.SubmitChanges();
         }
 
+        public bool isModerator(int groupId, int userId)
+        {
+            var query = from userGroups in db.UserGroups where userGroups.userId == userId && userGroups.groupId == groupId && userGroups.roleId == 1 select userGroups;
+            if (query.Any())
+                return true;
+            else
+                return false;
+        }
+
         public void deleteGroup(Group myGroup)
         {
             var query = from userGroup in db.UserGroups where userGroup.groupId == myGroup.groupId select userGroup;
@@ -124,6 +133,28 @@ namespace CampusGroups.dao
                 return null;
         }
 
+        public bool isUserInGroup(Group myGroup, User user)
+        {
+            //var resultUsers = (from users in db.Users
+            //                   join userGroups in db.UserGroups
+            //                       on users.userId equals userGroups.userId
+            //                   join groups in db.Groups
+            //                       on userGroups.groupId equals groups.groupId
+            //                   where userGroups.groupId == myGroup.groupId && userGroups.userId == user.userId
+            //                   select userGroups);
+            //if (resultUsers.Any())
+            //    return true;
+            //else
+            //    return false;
+            List<Group> gr = getGroupsByUser(user);
+            foreach (var g in gr)
+            {
+                if (g.groupId == myGroup.groupId)
+                    return true;
+            }
+            return false;
+        }
+
         public Invitation getInvitationByGroupAndUser(User user, Group invgroup)
         {
             var query = (from myGroup in db.Groups join myInvitation in db.Invitations on myGroup.groupId equals myInvitation.groupId
@@ -148,6 +179,12 @@ namespace CampusGroups.dao
                 Role role = suppDAO.getUserRole();
                 addUser(gr, usr, role);
             }
+            db.SubmitChanges();
+        }
+
+        public void insertInvitation(Invitation inv)
+        {
+            db.Invitations.InsertOnSubmit(inv);
             db.SubmitChanges();
         }
     }

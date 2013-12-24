@@ -14,7 +14,7 @@ namespace CampusGroups
         public User user
         { get; set; }
 
-        public Group group
+        public Group currentGroup
         { get; set; }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -26,6 +26,8 @@ namespace CampusGroups
             else
             {
                 UserDAO usrDAO = UserDAO.getUserDAO();
+                //int campusUserId = Int32.Parse(Session["userCampusId"].ToString());
+                //User user = usrDAO.getGroupsUserByCampusAccountId(campusUserId);
                 String name = usrDAO.getUserNameByCampusUserAccountId(user.campusUserId);
                 String profile = usrDAO.getProfileNameByCampusUserAccountId(user.campusUserId);
                 String department = usrDAO.getSubdivisionNameByCampusUserAccountId(user.campusUserId);
@@ -42,7 +44,25 @@ namespace CampusGroups
         {
             GroupDAO groupDAO = GroupDAO.getGroupDAO();
             SupportDAO suppDAO = SupportDAO.getSupportDAO();
-            groupDAO.addUser(group, user, suppDAO.getUserRole());
+            List<GroupRequest> req = suppDAO.getUnprocessedRequestByUserGroup(currentGroup, user);
+            foreach (var gr in req)
+            {
+                suppDAO.processRequest(gr, 1);
+            }
+            this.acceptRequest.Visible = false;
+            this.declineRequest.Visible = false;
+        }
+
+        protected void declineRequest_Click(object sender, ImageClickEventArgs e)
+        {
+            SupportDAO suppDAO = SupportDAO.getSupportDAO();
+            List<GroupRequest> req = suppDAO.getUnprocessedRequestByUserGroup(currentGroup, user);
+            foreach (var gr in req)
+            {
+                suppDAO.processRequest(gr, 0);
+            }
+            this.acceptRequest.Visible = false;
+            this.declineRequest.Visible = false;
         }
     }
 }

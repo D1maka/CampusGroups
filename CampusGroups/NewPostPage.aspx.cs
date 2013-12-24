@@ -7,17 +7,13 @@ using System.Web.UI.WebControls;
 
 namespace CampusGroups
 {
-    public partial class CampusGroupsMasterPage : System.Web.UI.MasterPage
+    public partial class NewPostPage : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            this.PlaceHolderGroupControl.Controls.Add(Page.LoadControl(@"~\GroupMainControl.ascx"));
 
-        }
-
-        protected void logOutBtn_Click(object sender, ImageClickEventArgs e)
-        {
-            Session.Abandon();
-            Response.Redirect(@"~\LoginPage.aspx");
+            this.PlaceHolderNewPostControl.Controls.Add(Page.LoadControl(@"~\NewPostControl.ascx"));
         }
     }
 }

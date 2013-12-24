@@ -21,18 +21,24 @@ namespace CampusGroups
             User user = userDAO.getGroupsUserByCampusAccountId(campusUserId);
             List<Invitation> invs = groupDAO.getUnprocessedGroupsInvitationsByUser(user);
             List<Group> userGroups = new List<Group>();
-            foreach (var inv in invs)
+            if (invs != null)
             {
-                userGroups.Add(groupDAO.getGroupByGroupId(inv.groupId));
+                foreach (var inv in invs)
+                {
+                    userGroups.Add(groupDAO.getGroupByGroupId(inv.groupId));
+                }
             }
 
-            foreach (var group in userGroups)
+            if (userGroups != null)
             {
-                GroupItemControl groupControl = (GroupItemControl)Page.LoadControl(@"~\GroupItemControl.ascx");
-                groupControl.currentGroup = group;
-                groupControl.OuterPage = "UserInvitationPage";
-                this.PlaceHolderInvitations.Controls.Add(groupControl);
+                foreach (var group in userGroups)
+                {
+                    GroupItemControl groupControl = (GroupItemControl)Page.LoadControl(@"~\GroupItemControl.ascx");
+                    groupControl.currentGroup = group;
+                    groupControl.OuterPage = "UserInvitationsPage";
+                    this.PlaceHolderInvitations.Controls.Add(groupControl);
 
+                }
             }
         }
     }

@@ -7,4 +7,5 @@
 <br />
 <asp:Label ID="userDepartment" runat="server" Text=""></asp:Label>
 <br />
-<asp:ImageButton ID="acceptRequest" runat="server" OnClick="acceptRequest_Click" />
+<asp:ImageButton ID="acceptRequest" runat="server" OnClick="acceptRequest_Click" ImageUrl="~\icons\button_ok_8132.png" Height="20px" Width="20px"/>
+<asp:ImageButton ID="declineRequest" runat="server" OnClick="declineRequest_Click" ImageUrl="~\icons\close.png" Height="20px" Width="20px"/>

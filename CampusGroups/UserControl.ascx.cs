@@ -69,5 +69,10 @@ namespace CampusGroups
         {
             Response.Redirect("~/ChangeUserAvatarPage.aspx");
         }
+
+        protected void myInvitationsButton_Click(object sender, ImageClickEventArgs e)
+        {
+            Response.Redirect("~/UserInvitationsPage.aspx");
+        }
     }
 }

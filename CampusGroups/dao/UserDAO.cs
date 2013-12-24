@@ -55,6 +55,27 @@ namespace CampusGroups.dao
             db.SubmitChanges();
         }
 
+        public List<User> getAllUsers()
+        {
+            var query = from usr in db.Users select usr;
+            if (query.Any())
+                return query.ToList();
+            else
+                return null;
+        }
+
+        public Role getUserRole(User user, Group currentGroup)
+        {
+            var query = from userGroups in db.UserGroups
+                        join role in db.Roles on userGroups.roleId equals role.roleId
+                        where userGroups.userId == user.userId && userGroups.groupId == currentGroup.groupId
+                        select role;
+            if (query.Any())
+                return query.First();
+            else
+                return null;
+        }
+
         public User getGroupUserByUserId(int id)
         {
             var query = from user in db.Users where user.userId == id select user;

@@ -23,10 +23,16 @@ namespace CampusGroups
             if (OuterPage.Equals("NewPostControl"))
             {
                 this.downloadAttachmentBtn.Visible = false;
+                this.deleteAttachmentBtn.Visible = true;
             }
         }
 
         protected void downloadAttachmentBtn_Click(object sender, ImageClickEventArgs e)
+        {
+
+        }
+
+        protected void deleteAttachmentBtn_Click(object sender, ImageClickEventArgs e)
         {
 
         }

@@ -10,33 +10,24 @@
 namespace CampusGroups {
     
     
-    public partial class AttachmentControl {
+    public partial class GroupUsersPage {
         
         /// <summary>
-        /// attachmentNameLbl control.
+        /// PlaceHolderGroupControl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label attachmentNameLbl;
+        protected global::System.Web.UI.WebControls.PlaceHolder PlaceHolderGroupControl;
         
         /// <summary>
-        /// downloadAttachmentBtn control.
+        /// PlaceHolderUsers control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton downloadAttachmentBtn;
-        
-        /// <summary>
-        /// deleteAttachmentBtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton deleteAttachmentBtn;
+        protected global::System.Web.UI.WebControls.PlaceHolder PlaceHolderUsers;
     }
 }

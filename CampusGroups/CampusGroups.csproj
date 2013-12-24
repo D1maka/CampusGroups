@@ -197,13 +197,17 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="CreateGroupControl.ascx" />
     <Content Include="CreateGroupPage.aspx" />
+    <Content Include="GroupInvitationPage.aspx" />
     <Content Include="GroupItemControl.ascx" />
     <Content Include="GroupMainControl.ascx" />
     <Content Include="GroupMainPage.aspx" />
     <Content Include="GroupMemberControl.ascx" />
     <Content Include="GroupPage.aspx" />
     <Content Include="GroupRequestControl.ascx" />
+    <Content Include="GroupUsersPage.aspx" />
+    <Content Include="icons\button_ok_8132.png" />
     <Content Include="icons\close.png" />
+    <Content Include="icons\edit_add_9180.png" />
     <Content Include="icons\group.png" />
     <Content Include="icons\new_group.png" />
     <Content Include="Images\accent.png" />
@@ -225,12 +229,16 @@
     <Content Include="InviteUserControl.ascx" />
     <Content Include="LoginPage.aspx" />
     <Content Include="NewPostControl.ascx" />
+    <Content Include="NewPostPage.aspx" />
     <Content Include="packages.config" />
     <Content Include="data\dbCAmpusGroups.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>dbCAmpusGroups.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="PostControl.ascx" />
+    <Content Include="PostsPage.aspx" />
+    <Content Include="ProcessGroupRequests.aspx" />
     <Content Include="UserControl.ascx" />
     <Content Include="UserInvitationsPage.aspx" />
     <Content Include="UserPage.aspx" />
@@ -402,6 +410,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="GroupInvitationPage.aspx.cs">
+      <DependentUpon>GroupInvitationPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GroupInvitationPage.aspx.designer.cs">
+      <DependentUpon>GroupInvitationPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="GroupItemControl.ascx.cs">
       <DependentUpon>GroupItemControl.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -444,6 +459,13 @@
     <Compile Include="GroupRequestControl.ascx.designer.cs">
       <DependentUpon>GroupRequestControl.ascx</DependentUpon>
     </Compile>
+    <Compile Include="GroupUsersPage.aspx.cs">
+      <DependentUpon>GroupUsersPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GroupUsersPage.aspx.designer.cs">
+      <DependentUpon>GroupUsersPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="InviteUserControl.ascx.cs">
       <DependentUpon>InviteUserControl.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -465,6 +487,34 @@
     </Compile>
     <Compile Include="NewPostControl.ascx.designer.cs">
       <DependentUpon>NewPostControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="NewPostPage.aspx.cs">
+      <DependentUpon>NewPostPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NewPostPage.aspx.designer.cs">
+      <DependentUpon>NewPostPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PostControl.ascx.cs">
+      <DependentUpon>PostControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PostControl.ascx.designer.cs">
+      <DependentUpon>PostControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="PostsPage.aspx.cs">
+      <DependentUpon>PostsPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PostsPage.aspx.designer.cs">
+      <DependentUpon>PostsPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProcessGroupRequests.aspx.cs">
+      <DependentUpon>ProcessGroupRequests.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProcessGroupRequests.aspx.designer.cs">
+      <DependentUpon>ProcessGroupRequests.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">

@@ -11,12 +11,12 @@ namespace CampusGroups
 {
     public partial class NewPostControl : System.Web.UI.UserControl
     {
-        private List<Attachment> attachments;
         public int parentPostId = 0;
+        private Attachment attach;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            attachments = new List<Attachment>();
+
         }
 
         protected void addPostBrn_Click(object sender, EventArgs e)
@@ -33,12 +33,27 @@ namespace CampusGroups
             post.postText = this.postTxtBox.Text;
             postDAO.insertPost(post);
             Post newPost = postDAO.getPostByPostUserGroupTime(authorId, groupId, date);
-            foreach (var attach in attachments)
+            if (FileUploadControl.HasFile)
+            {
+                try
+                {
+                    string filename = FileUploadControl.FileName;
+                    FileUploadControl.SaveAs(@"~\files\" + filename);
+                }
+                catch (Exception ex)
+                {
+                    StatusLabel.Text = "Upload status: The file could not be uploaded. The following error occured: " + ex.Message;
+                    attach = null;
+                }
+            }
+
+            if (attach != null)
             {
                 attach.postId = newPost.postId;
                 postDAO.insertAttachment(attach);
             }
-            
+
+            Response.Redirect("~/PostsPage.aspx");
         }
 
         protected void addAttachmentBtn_Click(object sender, EventArgs e)
@@ -48,15 +63,14 @@ namespace CampusGroups
                 try
                 {
                     string filename = FileUploadControl.FileName;
-                    FileUploadControl.SaveAs(@"~\files\" + filename);
                     StatusLabel.Text = "Upload status: File uploaded!";
-                    Attachment att = new Attachment();
-                    att.fileLink = @"~\files\" + filename;
-                    att.postId = 0;
-                    attachments.Add(att);
+                    attach = new Attachment();
+                    attach.fileLink = @"~\files\" + filename;
+                    attach.postId = 0;
                     AttachmentControl attControl = (AttachmentControl)Page.LoadControl(@"~\AttachmentControl.ascx");
                     attControl.OuterPage = "NewPostControl";
-                    attControl.attachment = att;
+                    attControl.attachment = attach;
+                    PlaceHolderAtt.Controls.Add(attControl);
                 }
                 catch (Exception ex)
                 {
