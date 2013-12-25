@@ -8,5 +8,5 @@
 <br />
 <asp:Label ID="userDepartment" runat="server" Text=""></asp:Label>
 <br />
-<asp:ImageButton ID="deleteBtn" runat="server" Visible="False" OnClick="deleteBtn_Click" />
+<asp:ImageButton ID="deleteBtn" runat="server" Visible="False" OnClick="deleteBtn_Click" AlternateText="Видалити"/>
 <br/>

@@ -72,7 +72,7 @@ namespace CampusGroups
 
         protected void leaveGroupButton_Click(object sender, ImageClickEventArgs e)
         {
-            if (OuterPage.Equals("UserPAge") || OuterPage.Equals("AllGroups"))
+            if (OuterPage.Equals("UserPage") || OuterPage.Equals("AllGroups"))
             {
                 int id = Int32.Parse(Session["userCampusId"].ToString());
                 UserDAO usrDAO = UserDAO.getUserDAO();
@@ -95,8 +95,16 @@ namespace CampusGroups
 
         protected void groupNameBtn_Click(object sender, EventArgs e)
         {
-            Session["groupId"] = currentGroup.groupId;
-            Response.Redirect(@"~\GroupMainPage.aspx");
+            GroupDAO groupDAO = GroupDAO.getGroupDAO();
+            int id = Int32.Parse(Session["userCampusId"].ToString());
+            UserDAO usrDAO = UserDAO.getUserDAO();
+            User user = usrDAO.getGroupsUserByCampusAccountId(id);
+
+            if (groupDAO.isUserInGroup(currentGroup, user))
+            {
+                Session["groupId"] = currentGroup.groupId;
+                Response.Redirect(@"~\GroupMainPage.aspx");
+            }
         }
 
         protected void sendRequestButton_Click(object sender, ImageClickEventArgs e)

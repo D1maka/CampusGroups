@@ -31,24 +31,6 @@ namespace CampusGroups {
         protected global::System.Web.UI.WebControls.Label usernameLbl;
         
         /// <summary>
-        /// userProfileType control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label userProfileType;
-        
-        /// <summary>
-        /// userDepartment control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label userDepartment;
-        
-        /// <summary>
         /// myGroupsBtn control.
         /// </summary>
         /// <remarks>
@@ -67,6 +49,15 @@ namespace CampusGroups {
         protected global::System.Web.UI.WebControls.ImageButton setAvatarBtn;
         
         /// <summary>
+        /// userProfileType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label userProfileType;
+        
+        /// <summary>
         /// viewAllGroupsBtn control.
         /// </summary>
         /// <remarks>
@@ -83,6 +74,15 @@ namespace CampusGroups {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton newGroupBtn;
+        
+        /// <summary>
+        /// userDepartment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label userDepartment;
         
         /// <summary>
         /// myInvitationsButton control.

@@ -19,5 +19,10 @@ namespace CampusGroups
             Session.Abandon();
             Response.Redirect(@"~\LoginPage.aspx");
         }
+
+        protected void toMyPageBtn_Click(object sender, ImageClickEventArgs e)
+        {
+            Response.Redirect(@"~\UserPage.aspx");
+        }
     }
 }

@@ -10,15 +10,24 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    <div style="width: 60%; text-align: center">
+    <table style="width:100%">
+    <tr>
+    <td style="width:20%"></td>
+    <td style="width:60%; align-self: center">
+    <%--<div style="width: 60%; text-align: center">--%>
         
-        <asp:ImageButton ID="logOutBtn" runat="server" OnClick="logOutBtn_Click" AlternateText="Вихід"/>
+        
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
         
             
         
         </asp:ContentPlaceHolder>
-    </>
+    <%--</div>--%>
+    </td>
+    <td><asp:ImageButton ID="toMyPageBtn" runat="server" AlternateText="Моя сторінка" OnClick="toMyPageBtn_Click"/></td>
+    <td style="width:20%"><asp:ImageButton ID="logOutBtn" runat="server" OnClick="logOutBtn_Click" AlternateText="Вихід"/></td>
+    </tr>
+    </table>
     </form>
 </body>
 </html>
