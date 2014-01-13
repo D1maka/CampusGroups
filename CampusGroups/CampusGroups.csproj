@@ -245,6 +245,11 @@
     <Content Include="WebForm1.aspx" />
     <Content Include="LoginControl.ascx" />
     <Content Include="CampusGroupsMasterPage.Master" />
+    <Content Include="API\CampusGroups.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>CampusGroups.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
@@ -296,6 +301,22 @@
     <Compile Include="AllGroupsPage.aspx.designer.cs">
       <DependentUpon>AllGroupsPage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="API\CampusGroups.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CampusGroups.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="API\Connection\CampusDbConnection.cs" />
+    <Compile Include="API\DAO\MessageDAO.cs" />
+    <Compile Include="API\DAO\MessageGroupDAO.cs" />
+    <Compile Include="API\DAO\MessageGroupInvitationDAO.cs" />
+    <Compile Include="API\DAO\MessageGroupRequestDAO.cs" />
+    <Compile Include="API\Entities\Message.cs" />
+    <Compile Include="API\Entities\MessageDetail.cs" />
+    <Compile Include="API\Entities\MessageGroup.cs" />
+    <Compile Include="API\Entities\MessageGroupInvitation.cs" />
+    <Compile Include="API\Entities\MessageGroupRequest.cs" />
+    <Compile Include="API\MessageGroupDAO.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\AuthConfig.cs" />
     <Compile Include="About.aspx.cs">
@@ -392,6 +413,7 @@
     </Compile>
     <Compile Include="dao\CampusDbConnection.cs" />
     <Compile Include="dao\GroupDAO.cs" />
+    <Compile Include="API\GroupUserDAO.cs" />
     <Compile Include="dao\PostDAO.cs" />
     <Compile Include="dao\SupportDAO.cs" />
     <Compile Include="dao\UserDAO.cs" />
@@ -591,6 +613,11 @@
       <DependentUpon>dbCAmpusGroups.dbml</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="API\CampusGroups.dbml.layout">
+      <DependentUpon>CampusGroups.dbml</DependentUpon>
+    </None>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -604,7 +631,7 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerPort>19124</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:13993/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

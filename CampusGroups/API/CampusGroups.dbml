@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="rIrCampus1.8TestElizaveta" Class="CampusGroupsDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=tcp:10.13.125.167,1433;Initial Catalog=rIrCampus1.8TestElizaveta;User ID=veres" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="rIrCampus1_8TestElizavetaConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.UserAccount" Member="UserAccounts">
+    <Type Name="UserAccount">
+      <Column Name="UserAccountId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Login" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="NewPassword" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Cookie" Type="System.String" DbType="Char(26)" CanBeNull="true" />
+      <Column Name="FullName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ScientificInterest" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="CodeAssembly" Type="System.String" DbType="Char(10)" CanBeNull="true" />
+      <Column Name="vcActuality" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="vcChangeDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="UserAccount_UserAccountLinkDcProfile" Member="UserAccountLinkDcProfiles" ThisKey="UserAccountId" OtherKey="UserAccountId" Type="UserAccountLinkDcProfile" />
+      <Association Name="UserAccount_Message" Member="Messages" ThisKey="UserAccountId" OtherKey="SenderUserAccountId" Type="Message" />
+      <Association Name="UserAccount_MessageDetail" Member="MessageDetails" ThisKey="UserAccountId" OtherKey="UserAccountId" Type="MessageDetail" />
+      <Association Name="UserAccount_MessageGroupUser" Member="MessageGroupUsers" ThisKey="UserAccountId" OtherKey="UserAccountId" Type="MessageGroupUser" />
+      <Association Name="UserAccount_MessageGroupInvitation" Member="MessageGroupInvitations" ThisKey="UserAccountId" OtherKey="UserAccountId" Type="MessageGroupInvitation" />
+      <Association Name="UserAccount_MessageGroupRequest" Member="MessageGroupRequests" ThisKey="UserAccountId" OtherKey="UserAccountId" Type="MessageGroupRequest" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UserAccountLinkDcProfile" Member="UserAccountLinkDcProfiles">
+    <Type Name="UserAccountLinkDcProfile">
+      <Column Name="UserAccountLinkDcProfileId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserAccountId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DcProfileId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DcSubdivisionId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="vcActuality" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="vcChangeDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="RtProfilePermissionId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="UserAccount_UserAccountLinkDcProfile" Member="UserAccount" ThisKey="UserAccountId" OtherKey="UserAccountId" Type="UserAccount" IsForeignKey="true" />
+      <Association Name="DcSubdivision_UserAccountLinkDcProfile" Member="DcSubdivision" ThisKey="DcSubdivisionId" OtherKey="DcSubdivisionId" Type="DcSubdivision" IsForeignKey="true" />
+      <Association Name="DcProfile_UserAccountLinkDcProfile" Member="DcProfile" ThisKey="DcProfileId" OtherKey="DcProfileId" Type="DcProfile" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Message" Member="Messages">
+    <Type Name="Message">
+      <Column Name="MessageId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SenderUserAccountId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Text" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Subject" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="DateSent" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="MessageGroupId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="vcActuality" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="vcChangeDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="Message_MessageDetail" Member="MessageDetails" ThisKey="MessageId" OtherKey="MessageId" Type="MessageDetail" />
+      <Association Name="UserAccount_Message" Member="UserAccount" ThisKey="SenderUserAccountId" OtherKey="UserAccountId" Type="UserAccount" IsForeignKey="true" />
+      <Association Name="MessageGroup_Message" Member="MessageGroup" ThisKey="MessageGroupId" OtherKey="MessageGroupId" Type="MessageGroup" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DcSubdivision" Member="DcSubdivisions">
+    <Type Name="DcSubdivision">
+      <Column Name="DcSubdivisionId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ParentId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OwnerId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DcSubdivisionTypeId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DcSubdivisionLevel" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="NameShort" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Abbreviation" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="AbbreviationEng" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="vcActuality" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="vcChangeDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="DcSubdivision_UserAccountLinkDcProfile" Member="UserAccountLinkDcProfiles" ThisKey="DcSubdivisionId" OtherKey="DcSubdivisionId" Type="UserAccountLinkDcProfile" />
+      <Association Name="DcSubdivision_DcSubdivision" Member="DcSubdivisions" ThisKey="DcSubdivisionId" OtherKey="ParentId" Type="DcSubdivision" />
+      <Association Name="DcSubdivision_DcSubdivision1" Member="DcSubdivisions1" ThisKey="DcSubdivisionId" OtherKey="OwnerId" Type="DcSubdivision" />
+      <Association Name="DcSubdivision_DcSubdivision" Member="DcSubdivision1" ThisKey="ParentId" OtherKey="DcSubdivisionId" Type="DcSubdivision" IsForeignKey="true" />
+      <Association Name="DcSubdivision_DcSubdivision1" Member="DcSubdivision2" ThisKey="OwnerId" OtherKey="DcSubdivisionId" Type="DcSubdivision" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DcProfile" Member="DcProfiles">
+    <Type Name="DcProfile">
+      <Column Name="DcProfileId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="vcActuality" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="vcChangeDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Association Name="DcProfile_UserAccountLinkDcProfile" Member="UserAccountLinkDcProfiles" ThisKey="DcProfileId" OtherKey="DcProfileId" Type="UserAccountLinkDcProfile" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MessageGroup" Member="MessageGroups">
+    <Type Name="MessageGroup">
+      <Column Name="MessageGroupId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="IsPrivate" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="vcActuality" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="vcChangeDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="MessageGroup_Message" Member="Messages" ThisKey="MessageGroupId" OtherKey="MessageGroupId" Type="Message" />
+      <Association Name="MessageGroup_MessageGroupUser" Member="MessageGroupUsers" ThisKey="MessageGroupId" OtherKey="MessageGroupId" Type="MessageGroupUser" />
+      <Association Name="MessageGroup_MessageGroupInvitation" Member="MessageGroupInvitations" ThisKey="MessageGroupId" OtherKey="MessageGroupId" Type="MessageGroupInvitation" />
+      <Association Name="MessageGroup_MessageGroupRequest" Member="MessageGroupRequests" ThisKey="MessageGroupId" OtherKey="MessageGroupId" Type="MessageGroupRequest" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MessageDetails" Member="MessageDetails">
+    <Type Name="MessageDetail">
+      <Column Name="MessageDetailsId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MessageId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserAccountId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DateRead" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DateView" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DateDelete" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="vcActuality" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="vcChangeDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="Message_MessageDetail" Member="Message" ThisKey="MessageId" OtherKey="MessageId" Type="Message" IsForeignKey="true" />
+      <Association Name="UserAccount_MessageDetail" Member="UserAccount" ThisKey="UserAccountId" OtherKey="UserAccountId" Type="UserAccount" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MessageGroupUser" Member="MessageGroupUsers">
+    <Type Name="MessageGroupUser">
+      <Column Name="MessageGroupUserId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MessageGroupId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserAccountId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="vcActuality" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="vcChangeDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="IsModerator" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="MessageGroup_MessageGroupUser" Member="MessageGroup" ThisKey="MessageGroupId" OtherKey="MessageGroupId" Type="MessageGroup" IsForeignKey="true" />
+      <Association Name="UserAccount_MessageGroupUser" Member="UserAccount" ThisKey="UserAccountId" OtherKey="UserAccountId" Type="UserAccount" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MessageGroupInvitation" Member="MessageGroupInvitations">
+    <Type Name="MessageGroupInvitation">
+      <Column Name="MessageGroupInvitationId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MessageGroupId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserAccountId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="InvitationDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="IsProcessed" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="MessageGroup_MessageGroupInvitation" Member="MessageGroup" ThisKey="MessageGroupId" OtherKey="MessageGroupId" Type="MessageGroup" IsForeignKey="true" />
+      <Association Name="UserAccount_MessageGroupInvitation" Member="UserAccount" ThisKey="UserAccountId" OtherKey="UserAccountId" Type="UserAccount" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MessageGroupRequest" Member="MessageGroupRequests">
+    <Type Name="MessageGroupRequest">
+      <Column Name="MessageGroupRequestId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MessageGroupId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserAccountId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RequestDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="IsProcessed" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="MessageGroup_MessageGroupRequest" Member="MessageGroup" ThisKey="MessageGroupId" OtherKey="MessageGroupId" Type="MessageGroup" IsForeignKey="true" />
+      <Association Name="UserAccount_MessageGroupRequest" Member="UserAccount" ThisKey="UserAccountId" OtherKey="UserAccountId" Type="UserAccount" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
